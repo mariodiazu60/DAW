@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head >
+		<meta charset="utf-8">
+		<meta name = "description" content="Web de fotos">
+		<title>Fotos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+
+
+	<body>
+		<header>
+			<div>
+				<h1>PI - Pictures & images</h1>
+				<figure> 
+					<a title="Logo" href="index.html"><img src="camaleon2.jpg" width="125" height="125" alt="Logotipo" ></a>
+				</figure>
+			</div>
+		</header>
+
+		<nav>
+			<ul>
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="busqueda.html">B&uacute;squeda</a></li>
+				<li><a href="registro.html">Registro</a></li>
+				<li><a href="inicio_sesion.html">Iniciar sesi&oacute;n</a></li>
+			</ul>
+		</nav>
+
+		<section>
+			<h2>Solicita t&uacute; &aacute;lbum</h2>
+			
+			<table style="width:15%">
+				<tr>
+					<th>Concepto</th>
+					<th>Tarifa</th> 
+				</tr>
+				<tr>
+					<td> &lt; 5 p&aacute;g</td>
+					<td> 0.10 € por p&aacute;g.</td>
+
+				</tr>
+				<tr>
+					<td> entre 5 y 10 p&aacute;g</td>
+					<td> 0.08 € por p&aacute;g.</td>
+				</tr>
+				<tr>
+					<td> &gt; 11 p&aacute;g</td>
+					<td> 0.07 € por p&aacute;g.</td>
+				</tr>
+				<tr>
+					<td> Blanco y negro</td>
+					<td> 0 €</td>
+				</tr>
+				<tr>
+					<td> Color</td>
+					<td> 0.05 € por foto</td>
+				</tr>
+				<tr>
+					<td> Resoluci&oacute;n > 300 dpi</td>
+					<td> 0.02 € por foto</td>
+				</tr>
+		    </table>
+			
+			<form>
+				<label> Nombre(*):</label>
+				<input type="text" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
+		
+				<label> T&iacute;tulo del &aacute;lbum(*):</label>
+				<input type="text" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
+				
+			    <label> Dedicatoria o descripci&oacute;n:</label>
+			    <textarea rows="4" cols="50" maxlength="4000"></textarea>
+			
+				<label>Correo del destinatario(*):</label>
+				<input type="email" maxlength="200" required/>
+				
+				<label> Pa&iacute;s(*):</label>
+				<input type="text" maxlength="50" required>
+				
+				<label> Ciudad(*):</label>
+				<input type="text" maxlength="50" required>
+				
+				<label> Provincia/regi&oacute;n(*):</label>
+				<input type="text" maxlength="50" required>
+				
+				<label> C&oacute;digo postal(*):</label>
+				<input type="text" maxlength="10" required>
+				
+				<label> Direcci&oacute;n postal(*):</label>
+				<input type="text" placeholder="Calle, portal y piso" maxlength="200" required>
+				
+				<label> Color de portada:</label>
+				<input type="color">
+				
+				<label> Color de las fotos:</label>
+				<select> 
+					<option value="0">Blanco y negro</option>
+					<option value="1">A todo color</option>
+				</select>
+				
+				<label> N&uacute;mero de copias(*):</label>
+				<input type="number" value="1" min="1" required>
+				
+				<label> &Aacute;lbum a imprimir(*):</label>
+				<input type="number" value="1" min="1" required>
+				
+				<label> Resoluci&oacute;n de las fotos:</label>
+				<input type="number" value="150" min="150" max="900" step="150">
+				
+				<label>Fecha de recepci&oacute;n del &aacute;lbum:</label>
+				<input type="date" required>
+				
+				<input type="submit" value="Enviar" name="Enviar">
+			</form>
+		</section>
+
+		<footer>
+			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | Desarrollo de Aplicaciones Web / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time> <a href="#header">Ir arriba</a></p>
+		</footer>
+	</body>
+</html>
