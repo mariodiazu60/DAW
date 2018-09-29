@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 	<head >
@@ -23,8 +23,6 @@
 			<ul>
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="busqueda.html">B&uacute;squeda</a></li>
-				<li><a href="registro.html">Registro</a></li>
-				<li><a href="inicio_sesion.html">Iniciar sesi&oacute;n</a></li>
 			</ul>
 		</nav>
 
@@ -63,57 +61,72 @@
 				</tr>
 		    </table>
 			
-			<form>
-				<label> Nombre(*):</label>
-				<input type="text" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
-		
-				<label> T&iacute;tulo del &aacute;lbum(*):</label>
-				<input type="text" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
-				
-			    <label> Dedicatoria o descripci&oacute;n:</label>
-			    <textarea rows="4" cols="50" maxlength="4000"></textarea>
-			
-				<label>Correo del destinatario(*):</label>
-				<input type="email" maxlength="200" required/>
-				
-				<label> Pa&iacute;s(*):</label>
-				<input type="text" maxlength="50" required>
-				
-				<label> Ciudad(*):</label>
-				<input type="text" maxlength="50" required>
-				
-				<label> Provincia/regi&oacute;n(*):</label>
-				<input type="text" maxlength="50" required>
-				
-				<label> C&oacute;digo postal(*):</label>
-				<input type="text" maxlength="10" required>
-				
-				<label> Direcci&oacute;n postal(*):</label>
-				<input type="text" placeholder="Calle, portal y piso" maxlength="200" required>
-				
-				<label> Color de portada:</label>
-				<input type="color">
-				
-				<label> Color de las fotos:</label>
-				<select> 
-					<option value="0">Blanco y negro</option>
-					<option value="1">A todo color</option>
-				</select>
-				
-				<label> N&uacute;mero de copias(*):</label>
-				<input type="number" value="1" min="1" required>
-				
-				<label> &Aacute;lbum a imprimir(*):</label>
-				<input type="number" value="1" min="1" required>
-				
-				<label> Resoluci&oacute;n de las fotos:</label>
-				<input type="number" value="150" min="150" max="900" step="150">
-				
-				<label>Fecha de recepci&oacute;n del &aacute;lbum:</label>
-				<input type="date" required>
-				
-				<input type="submit" value="Enviar" name="Enviar">
-			</form>
+            <form action="res_solic_album.html">
+                <label for="nomb"> Nombre(*):</label>
+                <input type="text" name="nomb" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
+
+                <label for="tit"> T&iacute;tulo del &aacute;lbum(*):</label>
+                <input type="text" name="tit" id="tit" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
+
+                <label for="dedic"> Dedicatoria o descripci&oacute;n:</label>
+                <textarea rows="4" id="dedic" name="dedic" cols="50" maxlength="4000"></textarea>
+
+                <label for="correo"> Correo del destinatario(*):</label>
+                <input type="email" name="correo" id="correo" maxlength="200" required />
+
+                <label for="pais"> Pa&iacute;s(*):</label>
+                <select name="pais" id="pais">
+                    <option value="0">España</option>
+                    <option value="1">Alemania</option>
+                    <option value="2">Francia</option>
+                </select>
+
+                <label for="prov"> Provincia/regi&oacute;n(*):</label>
+                <select name="prov" id="prov">
+                    <option value="0">Álava</option>
+                    <option value="1">Albacete</option>
+                    <option value="2">Alicante</option>
+                </select>
+                <label for="ciud"> Ciudad(*):</label>
+                <select name="ciud" id="ciud">
+                    <option value="0">Torrevieja</option>
+                    <option value="1">Elche</option>
+                    <option value="2">Alicante</option>
+                </select>
+
+                <label for="cod"> C&oacute;digo postal(*):</label>
+                <input type="text" name="cod" id="cod" maxlength="10" required>
+
+                <label for="direc"> Direcci&oacute;n postal(*):</label>
+                <input type="text" name="direc" id="direc" placeholder="Calle, portal y piso" maxlength="200" required>
+
+                <label for="colo"> Color de portada:</label>
+                <input type="color" name="colo" id="colo">
+
+                <label for="colo_foto"> Color de las fotos:</label>
+                <select name="colo_foto" id="colo_foto">
+                    <option value="0">Blanco y negro</option>
+                    <option value="1">A todo color</option>
+                </select>
+
+                <label for="copias"> N&uacute;mero de copias(*):</label>
+                <input type="number" name="copias" id="copias" value="1" min="1" required>
+
+                <label for="imp"> &Aacute;lbum a imprimir(*):</label>
+                <select name="imp" id="imp">
+                    <option value="0">Vacaciones 2017</option>
+                    <option value="1">Vacaciones 2018</option>
+                    <option value="2">Mejores momentos</option>
+                </select>
+
+                <label for="res"> Resoluci&oacute;n de las fotos:</label>
+                <input type="number" name="res" id="res" value="150" min="150" max="900" step="150">
+
+                <label for="fecha">Fecha de recepci&oacute;n del &aacute;lbum:</label>
+                <input type="date" name="fecha" id="fecha" required>
+
+                <input type="submit" value="Enviar" name="Enviar">
+            </form>
 		</section>
 
 		<footer>

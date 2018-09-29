@@ -23,19 +23,17 @@
 			<ul>
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="busqueda.html">B&uacute;squeda</a></li>
-				<li><a href="registro.html">Registro</a></li>
-				<li><a href="inicio_sesion.html">Iniciar sesi&oacute;n</a></li>
 			</ul>
 		</nav>
 
 		<section>
 			<h2>Inicio de sesi&oacute;n</h2>
-			<form name="Login">
-				<label> Usuario:</label>
-				<input type="text">
+			<form name="Login" action="menu_user_logeado.html">
+				<label for="usu"> Usuario:</label>
+				<input type="text" id="usu" name="usu">
 					
-				<label> Contraseña:</label>
-				<input type="password">
+				<label for="contra"> Contraseña:</label>
+				<input type="password" id="contra" name="contra">
 
 				<input type="submit" name="Enviar">
 			</form>	
