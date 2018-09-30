@@ -5,6 +5,7 @@
 		<meta name = "description" content="Web de fotos">
 		<title>Fotos</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" type="text/css" href="estilo.css">
 	</head>
 
 	<body>
@@ -12,7 +13,7 @@
 			<div>
 				<h1>PI - Pictures & images</h1>
 				<figure> 
-					<a title="Logotipo" href="index.html"><img src="camaleon2.jpg" width="125" height="125" alt="Logotipo de la web" ></a>
+					<a title="Logotipo" href="index.html"><img src="logo.jpg" width="125" height="125" alt="Logotipo de la web" ></a>
 				</figure>
 			</div>
 		</header>
@@ -27,9 +28,8 @@
 		</nav>
 
 		<section>
-			<h2>Inicio</h2>
-			<form name="busqueda" action="res_busqueda.html">
-				<input type="search">
+			<form name="busqueda" class="buscador" action="res_busqueda.html">
+				<input type="search" placeholder="Buscar">
                 <input type="submit" name="Enviar">
 			</form>
 
