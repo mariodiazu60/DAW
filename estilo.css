@@ -1,7 +1,27 @@
+*{
+	margin: 0;
+}
 body{
 	font-family: verdana, sans-serif;
+	font-size: 14px;
+	max-width: 1500px;
 	margin: 0 auto;
 }
+/*CABECERA*/
+body>header{
+	width: 100%;
+	background-color: #336699;
+	font-weight: bold;
+	overflow: hidden;
+	color: white; 
+}
+	body>header>figure{
+		align-self: center;
+	}
+	body>header>h1{
+		display: inline-block;
+		margin: 0;
+	}
 
 /*MENU DE NAVEGACION + BARRA BUSCAR*/
 body>nav{
@@ -13,16 +33,13 @@ body>nav>ul{
 }
 	body>nav>ul>li{
 		float: left;
-		margin: 0;
 		padding: 0;
 	}
 		body>nav>ul>li>a{
-			margin: 0;
 			color: #FFFFFF;
 			background-color: #666666;
 			text-align: center;
-			padding: .28em .4em;
-			text-decoration: none;
+			padding: .2em .4em;
 			font-weight: bold;
 			display: block;
 		}
@@ -32,10 +49,12 @@ body>nav>ul{
 			}
 .buscador{
 	display: inline-block;
-	padding: .2em .4em;
+	padding: .08em .4em;
 	background-color: #666666;
 }
-
+.enlace{
+	text-decoration: none;
+}
 /*MOSTRAR FOTOS*/
 body>section>article{	
 
@@ -45,3 +64,23 @@ body>section>article{
 body>{
 
 }
+
+/*PIE DE PAGINA*/
+body>footer{
+	background-color: #336699;
+	color: white;
+	width: 100%;
+}
+	body>footer>p{
+		margin-left: 1%;
+	}
+
+		body>footer>p>a{
+			color: white;
+			float: right;
+			margin-right: 2%;
+		}
+			body>footer>p>a:hover, body>footer>p>a:active{
+					background-color: #FFFFFF;
+					color: #336699;
+				}
