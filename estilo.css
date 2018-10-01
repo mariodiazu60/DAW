@@ -61,25 +61,36 @@ body>section>article{
 }
 
 /*FORMULARIOS*/
-
-<<<<<<< HEAD
-	.formularios>form{
-		box-sizing: border-box;
-		text-align: center;
-		content-align_ center;
-		overflow: hidden;
-		display: block;
-		width: 90%;
-		padding: 1em;
-		background-color: #336699;
-	}
-
-	.formularios>form>label{
-		display: block;
-	}
-
-=======
+	
+.formularios{
+	background-color: #336699;
+	text-align: center;
+	margin: 2em 0 0 0;
+	display: flex;
+	flex-direction: column;
 }
+	.formularios>h2{
+		padding: 1em 0 0 0;
+	}
+	
+	.formularios>form{
+        padding: 1em;
+		align-self: center;
+	}
+
+	.formularios>form>input{
+		display: block;
+		margin: auto; 
+	}
+	
+	.formularios>form>select{
+		display: block;
+		margin: auto; 
+	}
+	
+	
+	
+	
 
 /*PIE DE PAGINA*/
 body>footer{
@@ -100,4 +111,4 @@ body>footer{
 					background-color: #FFFFFF;
 					color: #336699;
 				}
->>>>>>> dc1d1f14472c1faecbf1beac45fdd548ea6063e4
+
