@@ -42,6 +42,19 @@ body>section>article{
 }
 
 /*FORMULARIOS*/
-body>{
 
-}
+	.formularios>form{
+		box-sizing: border-box;
+		text-align: center;
+		content-align_ center;
+		overflow: hidden;
+		display: block;
+		width: 90%;
+		padding: 1em;
+		background-color: #336699;
+	}
+
+	.formularios>form>label{
+		display: block;
+	}
+
