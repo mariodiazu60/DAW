@@ -68,42 +68,80 @@ body>section{
 }
 
 /*FORMULARIOS*/
-<<<<<<< HEAD
+
 	
 .formularios{
 	background-color: #336699;
 	text-align: center;
-	margin: 2em 0 0 0;
+	margin: 2em 0 2em 0;
 	display: flex;
 	flex-direction: column;
 }
 	.formularios>h2{
 		padding: 1em 0 0 0;
 	}
-	
-=======
->>>>>>> ae1a554e11290171747c608c5b51caa7587be007
+
 	.formularios>form{
         padding: 1em;
 		align-self: center;
 	}
-
+	
 	.formularios>form>input{
 		display: block;
 		margin: auto; 
 	}
-<<<<<<< HEAD
+	
+	.formularios>form>textarea{
+		display: block;
+		margin: auto; 
+	}
 	
 	.formularios>form>select{
 		display: block;
 		margin: auto; 
 	}
 	
+	.formularios>table{
+		margin:auto;
+		background-color: white;
+		border-collapse: collapse;
+		
+	}
+	.formularios>table>th{
+		background-color: #336699;
+	}
 	
 	
+	.formularios>table, td{
+		border: 1px solid black;
+		padding: 0.3em;
+		text-align: center;
+	}
 	
-=======
->>>>>>> ae1a554e11290171747c608c5b51caa7587be007
+
+.formulario_buscar{
+	background-color: #336699;
+	text-align: center;
+	margin: 2em 0 2em 0;
+	display: flex;
+	flex-direction: inline-block;
+}
+
+	.formulario_buscar>h2{
+		padding: 1em 0 1.2em 1em;
+	}
+	
+	.formulario_buscar>form{
+        padding: 1em;
+		align-self: center;
+	}
+	
+	.formulario_buscar>form>input{
+		display: inline-block;
+		margin: auto; 
+	}
+	
+	
 
 /*PIE DE PAGINA*/
 body>footer{
@@ -124,7 +162,4 @@ body>footer{
 					background-color: #FFFFFF;
 					color: #336699;
 				}
-<<<<<<< HEAD
 
-=======
->>>>>>> ae1a554e11290171747c608c5b51caa7587be007
