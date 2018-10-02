@@ -54,7 +54,7 @@ body>nav>ul{
 			}
 .buscador{
 	padding: .08em .4em;
-	background-color: #666666;
+	background-color: #546e7a;
 	float: right;
 }
 .enlace{
@@ -70,7 +70,7 @@ body>section{
 
 /*FORMULARIOS*/
 .formularios{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 2em 0 0 0;
 	display: flex;
@@ -108,9 +108,6 @@ body>section{
 		border-collapse: collapse;
 		
 	}
-	.formularios>table>th{
-		background-color: #336699;
-	}
 	
 	
 	.formularios>table, td{
@@ -121,7 +118,7 @@ body>section{
 	
 
 .formulario_buscar{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 2em 0 2em 0;
 	display: flex;
@@ -146,7 +143,7 @@ body>section{
 	
 /*MENU USUARIO LOGEADO*/
 .menu_user_logeado{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 1em 0;
 	display: flex;
