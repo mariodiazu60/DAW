@@ -46,6 +46,7 @@ body>nav>ul{
 			padding: .2em .4em;
 			font-weight: bold;
 			display: block;
+			text-decoration: none;
 		}
 			body>nav>ul>li>a:hover, body>nav>ul>li>a:active{
 				background-color: #FFFFFF;
@@ -68,37 +69,37 @@ body>section{
 }
 
 /*FORMULARIOS*/
-
-	
 .formularios{
 	background-color: #336699;
 	text-align: center;
-	margin: 2em 0 2em 0;
+	padding: 2em 0 0 0;
 	display: flex;
 	flex-direction: column;
 }
 	.formularios>h2{
-		padding: 1em 0 0 0;
+		margin: 1em 0 1.5em 0;
 	}
 
 	.formularios>form{
         padding: 1em;
 		align-self: center;
 	}
-	
+		
 	.formularios>form>input{
 		display: block;
-		margin: auto; 
+		margin: .3em auto 1em auto; 
 	}
 	
 	.formularios>form>textarea{
 		display: block;
 		margin: auto; 
+		margin: .3em auto 1em auto; 
 	}
 	
 	.formularios>form>select{
 		display: block;
 		margin: auto; 
+		margin: .3em auto 1em auto; 
 	}
 	
 	.formularios>table{
@@ -122,7 +123,7 @@ body>section{
 .formulario_buscar{
 	background-color: #336699;
 	text-align: center;
-	margin: 2em 0 2em 0;
+	padding: 2em 0 2em 0;
 	display: flex;
 	flex-direction: inline-block;
 }
@@ -142,12 +143,36 @@ body>section{
 	}
 	
 	
+	
+/*MENU USUARIO LOGEADO*/
+.menu_user_logeado{
+	background-color: #336699;
+	text-align: center;
+	padding: 1em 0;
+	display: flex;
+	flex-direction: column;
+}
+
+	.menu_user_logeado>p{
+		padding: 1em;
+	}
+	
+		.menu_user_logeado>p>a{
+			text-decoration: none;
+		}
+		
+		.menu_user_logeado>p>a:hover{
+			background-color: #FFFFFF;
+			color: #336699;
+		}
+	
 
 /*PIE DE PAGINA*/
 body>footer{
-	background-color: #336699;
+	background-color: #666666;
 	color: white;
 	width: 100%;
+	padding: 2em 0;
 }
 	body>footer>p{
 		margin-left: 1%;
