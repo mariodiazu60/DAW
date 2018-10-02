@@ -166,7 +166,50 @@ body>section{
 			color: #336699;
 		}
 	
+/*DETALLE FOTO*/
 
+.detalle{
+	background-color: #336699;
+	text-align: center;
+	padding: 1em 0;
+	display: flex;
+	flex-direction: column;
+}
+
+	.detalle>h2{
+		padding: 1em 0 1em 1em;
+	}
+	
+	.detalle>form{
+		padding: 1em 0 1em 1em;
+	}
+		
+	.detalle>article{
+		padding:1.5em;
+		border-top: 1px solid #000000;;
+	}
+		.detalle>article>ul{
+			list-style-type: none;
+			overflow: hidden;
+		}
+		
+			.detalle>article>ul>li{
+				display: inline-block;
+				color: white;
+				text-align: center;
+				padding: 1em;
+			}
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 /*PIE DE PAGINA*/
 body>footer{
 	background-color: #666666;
