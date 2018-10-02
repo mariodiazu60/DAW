@@ -16,7 +16,7 @@ body>header{
 	display: grid;
 	grid-template-areas:
 	"logo titulo"
-	"lema lema";
+	"logo titulo";
 }
 	body>header>figure{
 		grid-area: logo;
@@ -43,7 +43,7 @@ body>nav>ul{
 		body>nav>ul>li>a{
 			color: #FFFFFF;
 			text-align: center;
-			padding: .2em .4em;
+			padding: .4em .4em;
 			font-weight: bold;
 			display: block;
 			text-decoration: none;
@@ -53,7 +53,7 @@ body>nav>ul{
 				color: #666666;
 			}
 .buscador{
-	padding: .08em .4em;
+	padding: .25em .4em;
 	background-color: #546e7a;
 	float: right;
 }
@@ -67,6 +67,48 @@ body>nav>ul{
 body>section{
 	width: 100%;
 }
+	body>section>h2{
+		text-align: center;
+	}
+	body>section>div{
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		display: flex;
+	}
+		body>section>div>article{
+			width: 30%;
+			margin:.5em;
+			background-color: #87d3ff;
+			flex-grow: 1;
+			padding: 0;
+			display: grid;
+			grid-template-areas:
+			"titulo titulo"
+			"foto foto"
+			"pie pie";
+		}
+			body>section>div>article>p{
+				grid-area: titulo;
+				padding: .5em;
+				margin: .5em;
+				text-align: center;	
+			}
+			body>section>div>article>p>a{
+				color: black;
+			}
+			body>section>div>article>figure{
+				grid-area: foto;
+				text-align: center;
+				padding-bottom: 1em;
+			}
+				body>section>div>article>figure>a>img{
+					vertical-align: middle;	
+				}
+			body>section>div>article>footer{
+				grid-area: pie;
+				text-align: center;
+			}
 
 /*FORMULARIOS*/
 .formularios{
@@ -202,7 +244,7 @@ body>footer{
 	background-color: #336699;
 	color: white;
 	width: 100%;
-	padding: 2em 0;
+	padding: 1em 0;
 }
 	body>footer>p{
 		margin-left: 1%;
@@ -212,6 +254,9 @@ body>footer{
 			color: white;
 			float: right;
 			margin-right: 1%;
+			border-style: solid;
+			border-color: white;
+			border-width: 1px; 
 		}
 			body>footer>p>a:hover, body>footer>p>a:active{
 					background-color: #FFFFFF;
