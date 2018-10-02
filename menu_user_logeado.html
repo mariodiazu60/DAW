@@ -12,12 +12,10 @@
 
 	<body>
 		<header>
-			<div>
-				<h1>PI - Pictures & images</h1>
-				<figure> 
-					<a title="Logo" href="index.html"><img src="camaleon2.jpg" width="125" height="125" alt="Logotipo" ></a>
-				</figure>
-			</div>
+			<figure> 
+				<a title="Logotipo" href="index.html"><img src="logo.png" width="180" height="200" alt="Logotipo de la web" ></a>
+			</figure>
+			<h1>PI - Pictures & images</h1>
 		</header>
 
 		<nav>
@@ -25,22 +23,23 @@
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="busqueda.html">B&uacute;squeda</a></li>
 			</ul>
+			<form name="busqueda" class="buscador" action="res_busqueda.html">
+				<input type="search" placeholder="Buscar">
+                <input class="puntero_mano" type="submit" name="Enviar">
+			</form>
 		</nav>
 
 		<section class="menu_user_logeado">
-			<h2>Men&uacute; de cuenta</h2>
-			<ul>
-				<li><a href="">Modificar mis datos</a></li>
-				<li><a href="">Mis &aacute;lbumes</a></li>
-				<li><a href="">Crear &aacute;lbum</a></li>
-				<li><a href="solic_album.html">Solicitar &aacute;lbum</a></li>
-				<li><a href="">Darme de baja</a></li>
-			</ul>
+			<h2>Men&uacute; de cuenta:</h2>
+			<p><a href="">Modificar mis datos</a></p>
+			<p><a href="">Mis &aacute;lbumes</a></p>
+			<p><a href="">Crear &aacute;lbum</a></p>
+			<p><a href="solic_album.html">Solicitar &aacute;lbum</a></p>
+			<p><a href="">Darme de baja</a></p>
 		</section>
 
-
 		<footer>
-			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | Desarrollo de Aplicaciones Web / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time> <a href="#header">Ir arriba</a></p>
+			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | Desarrollo de Aplicaciones Web / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time> <a class="enlace" href="#header">Ir arriba</a></p>
 		</footer>
 	</body>
 </html>
