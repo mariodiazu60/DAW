@@ -30,7 +30,7 @@ body>header{
 body>nav{
 	overflow: auto;
 	width: 100%;
-	background-color: #666666;
+	background-color: #546e7a;
 }
 body>nav>ul{
 	padding: 0;
@@ -54,7 +54,7 @@ body>nav>ul{
 			}
 .buscador{
 	padding: .08em .4em;
-	background-color: #666666;
+	background-color: #546e7a;
 	float: right;
 }
 .enlace{
@@ -70,7 +70,7 @@ body>section{
 
 /*FORMULARIOS*/
 .formularios{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 1em 0 0 0;
 	display: flex;
@@ -111,9 +111,6 @@ body>section{
 		border-collapse: collapse;
 		
 	}
-	.formularios>table>th{
-		background-color: #336699;
-	}
 	
 	
 	.formularios>table, td{
@@ -124,7 +121,7 @@ body>section{
 	
 
 .formulario_buscar{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 2em 0 0 0;
 	display: flex;
@@ -154,7 +151,7 @@ body>section{
 	
 /*MENU USUARIO LOGEADO*/
 .menu_user_logeado{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 1em 0 0 0;
 	display: flex;
@@ -175,7 +172,49 @@ body>section{
 			color: black;
 		}
 	
+/*DETALLE FOTO*/
 
+.detalle{
+	background-color: #87d3ff;
+	text-align: center;
+	padding: 1em 0;
+	display: flex;
+	flex-direction: column;
+}
+
+	.detalle>h2{
+		padding: 1em 0 1em 1em;
+	}
+	
+	.detalle>form{
+		padding: 1em 0 1em 1em;
+	}
+		
+	.detalle>article{
+		padding:1.5em;
+		border-top: 1px solid #000000;;
+	}
+		.detalle>article>ul{
+			list-style-type: none;
+			overflow: hidden;
+		}
+		
+			.detalle>article>ul>li{
+				display: inline-block;
+				text-align: center;
+				padding: 1em;
+			}
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 /*PIE DE PAGINA*/
 body>footer{
 	background-color: #336699;
