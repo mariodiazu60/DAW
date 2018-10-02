@@ -72,7 +72,7 @@ body>section{
 .formularios{
 	background-color: #336699;
 	text-align: center;
-	padding: 2em 0 0 0;
+	padding: 1em 0 0 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -84,22 +84,25 @@ body>section{
         padding: 1em;
 		align-self: center;
 	}
+		.formularios>form>label{
+			color: white;
+		}
+
+		.formularios>form>input{
+			display: block;
+			margin: .3em auto 1em auto; 
+		}
 		
-	.formularios>form>input{
-		display: block;
-		margin: .3em auto 1em auto; 
-	}
-	
-	.formularios>form>textarea{
-		display: block;
-		margin: auto; 
-		margin: .3em auto 1em auto; 
-	}
-	
-	.formularios>form>select{
-		display: block;
-		margin: auto; 
-		margin: .3em auto 1em auto; 
+		.formularios>form>textarea{
+			display: block;
+			margin: auto; 
+			margin: .3em auto 1em auto; 
+		}
+		
+		.formularios>form>select{
+			display: block;
+			margin: auto; 
+			margin: .3em auto 1em auto; 
 	}
 	
 	.formularios>table{
@@ -123,13 +126,14 @@ body>section{
 .formulario_buscar{
 	background-color: #336699;
 	text-align: center;
-	padding: 2em 0 2em 0;
+	padding: 2em 0 0 0;
 	display: flex;
 	flex-direction: inline-block;
 }
 
 	.formulario_buscar>h2{
 		padding: 1em 0 1.2em 1em;
+		color: white;
 	}
 	
 	.formulario_buscar>form{
@@ -137,6 +141,10 @@ body>section{
 		align-self: center;
 	}
 	
+	.formulario_buscar>form>label{
+		color: white;
+	}
+
 	.formulario_buscar>form>input{
 		display: inline-block;
 		margin: auto; 
@@ -148,7 +156,7 @@ body>section{
 .menu_user_logeado{
 	background-color: #336699;
 	text-align: center;
-	padding: 1em 0;
+	padding: 1em 0 0 0;
 	display: flex;
 	flex-direction: column;
 }
@@ -159,17 +167,18 @@ body>section{
 	
 		.menu_user_logeado>p>a{
 			text-decoration: none;
+			color: black;
 		}
 		
 		.menu_user_logeado>p>a:hover{
 			background-color: #FFFFFF;
-			color: #336699;
+			color: black;
 		}
 	
 
 /*PIE DE PAGINA*/
 body>footer{
-	background-color: #666666;
+	background-color: #336699;
 	color: white;
 	width: 100%;
 	padding: 2em 0;
