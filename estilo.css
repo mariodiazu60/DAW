@@ -30,7 +30,7 @@ body>header{
 body>nav{
 	overflow: auto;
 	width: 100%;
-	background-color: #666666;
+	background-color: #546e7a;
 }
 body>nav>ul{
 	padding: 0;
@@ -169,7 +169,7 @@ body>section{
 /*DETALLE FOTO*/
 
 .detalle{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 1em 0;
 	display: flex;
@@ -195,7 +195,6 @@ body>section{
 		
 			.detalle>article>ul>li{
 				display: inline-block;
-				color: white;
 				text-align: center;
 				padding: 1em;
 			}
@@ -212,7 +211,7 @@ body>section{
 	
 /*PIE DE PAGINA*/
 body>footer{
-	background-color: #666666;
+	background-color: #336699;
 	color: white;
 	width: 100%;
 	padding: 2em 0;
