@@ -30,7 +30,7 @@ body>header{
 body>nav{
 	overflow: auto;
 	width: 100%;
-	background-color: #666666;
+	background-color: #546e7a;
 }
 body>nav>ul{
 	padding: 0;
@@ -54,7 +54,7 @@ body>nav>ul{
 			}
 .buscador{
 	padding: .08em .4em;
-	background-color: #666666;
+	background-color: #546e7a;
 	float: right;
 }
 .enlace{
@@ -70,23 +70,20 @@ body>section{
 
 /*FORMULARIOS*/
 .formularios{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 1em 0 0 0;
 	display: flex;
 	flex-direction: column;
 }
 	.formularios>h2{
-		margin: 1em 0 1.5em 0;
+		margin: 1em 0 1em 0;
 	}
 
 	.formularios>form{
         padding: 1em;
 		align-self: center;
 	}
-		.formularios>form>label{
-			color: white;
-		}
 
 		.formularios>form>input{
 			display: block;
@@ -111,10 +108,6 @@ body>section{
 		border-collapse: collapse;
 		
 	}
-	.formularios>table>th{
-		background-color: #336699;
-	}
-	
 	
 	.formularios>table, td{
 		border: 1px solid black;
@@ -124,7 +117,7 @@ body>section{
 	
 
 .formulario_buscar{
-	background-color: #336699;
+	background-color: #87d3ff;
 	text-align: center;
 	padding: 2em 0 0 0;
 	display: flex;
@@ -133,16 +126,11 @@ body>section{
 
 	.formulario_buscar>h2{
 		padding: 1em 0 1.2em 1em;
-		color: white;
 	}
 	
 	.formulario_buscar>form{
         padding: 1em;
 		align-self: center;
-	}
-	
-	.formulario_buscar>form>label{
-		color: white;
 	}
 
 	.formulario_buscar>form>input{
@@ -154,28 +142,56 @@ body>section{
 	
 /*MENU USUARIO LOGEADO*/
 .menu_user_logeado{
-	background-color: #336699;
-	text-align: center;
-	padding: 1em 0 0 0;
+	background-color: #87d3ff;
+	padding: 1em 0;
 	display: flex;
 	flex-direction: column;
 }
 
-	.menu_user_logeado>p{
-		padding: 1em;
+	.menu_user_logeado>h2{
+		align-self: center;
 	}
-	
-		.menu_user_logeado>p>a{
-			text-decoration: none;
-			color: black;
-		}
-		
-		.menu_user_logeado>p>a:hover{
-			background-color: #FFFFFF;
-			color: black;
-		}
-	
 
+	.menu_user_logeado>ul{
+		padding: 1em;
+		align-self: center;
+	}
+		.menu_user_logeado>ul>li{
+			padding: 1em;
+		}
+	
+			.menu_user_logeado>ul>li>a{
+				text-decoration: none;
+				color: black;
+			}
+			
+			.menu_user_logeado>ul>li>a:hover{
+				background-color: black;
+				color: #87d3ff;
+			}
+	
+/*DETALLE FOTO*/
+.detalle{
+	background-color: #87d3ff;
+	text-align: center;
+	padding: 1em 0;
+	display: flex;
+	flex-direction: column;
+}
+
+	.detalle>h2{
+		padding: 1em 0 1em 0;
+	}
+		
+		.detalle>article>ul{
+			list-style-type: none;
+			overflow: hidden;
+		}
+			.detalle>article>ul>li{
+				display: inline-block;
+				text-align: center;
+				padding: 1em;
+			}
 /*PIE DE PAGINA*/
 body>footer{
 	background-color: #336699;
