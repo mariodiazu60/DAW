@@ -11,10 +11,12 @@
 
 	<body>
 		<header>
-			<figure> 
-				<a title="Logotipo" href="index.html"><img src="logo.png" width="180" height="200" alt="Logotipo de la web" ></a>
-			</figure>
-			<h1>PI - Pictures & images</h1>
+			<div>
+				<h1>PI - Pictures & images</h1>
+				<figure> 
+					<a title="Logo" href="index.html"><img src="camaleon2.jpg" width="125" height="125" alt="Logotipo" ></a>
+				</figure>
+			</div>
 		</header>
 
 		<nav>
@@ -22,14 +24,10 @@
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="busqueda.html">B&uacute;squeda</a></li>
 			</ul>
-			<form name="busqueda" class="buscador" action="res_busqueda.html">
-				<input type="search" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="formularios">
-			<h2>Inicio de sesi&oacute;n:</h2>
+			<h2>Inicio de sesi&oacute;n</h2>
 			<form name="Login" action="menu_user_logeado.html">
 				<label for="usu"> Usuario:</label>
 				<input type="text" id="usu" name="usu">
@@ -37,13 +35,13 @@
 				<label for="contra"> Contraseña:</label>
 				<input type="password" id="contra" name="contra">
 
-				<input class="puntero_mano" type="submit" name="Enviar">
+				<input type="submit" name="Enviar">
 			</form>	
 		</section>
 
 
 		<footer>
-			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | Desarrollo de Aplicaciones Web / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time> <a class="enlace" href="#header">Ir arriba</a></p>
+			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | Desarrollo de Aplicaciones Web / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time> <a href="#header">Ir arriba</a></p>
 		</footer>
 	</body>
 </html>
