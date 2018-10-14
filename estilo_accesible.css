@@ -64,9 +64,6 @@ body>nav>ul{
 	background-color: #546e7a;
 	float: right;
 }
-	.buscador>input:focus{
-		background-color: #87d3ff; 
-	}
 .enlace{
 	/*text-decoration: none;*/
 }
@@ -285,42 +282,3 @@ body>footer{
 					background-color: #FFFFFF;
 					color: #336699;
 				}
-
-/* MEDIA QUERIS */
-@media all and (max-width: 480px) {
-	body>section>div{
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-	}
-	body>section>div>article{
-        width: 90%;
-    }
-}
-
-@media all and (min-width: 481px) and (max-width: 980px) {
-	body>section>div{
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-	}
-	body>section>div>article{
-        width: 40%;
-    }
-}
-
-@media all and (max-width: 584px) {
-	.buscador{
-		padding: .25em .4em;
-		background-color: #546e7a;
-		float: left;
-	}
-}
-
-@media all and (max-width: 779px) {
-	body>footer>p>a{
-			color: white;
-			float: none;
-			margin-left: 2%;
-		}
-}

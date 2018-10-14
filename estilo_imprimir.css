@@ -3,7 +3,7 @@
 }
 
 body{
-	font-family: verdana, sans-serif;
+	font-family: georgia, serif;
 	font-size: 14px;
 	max-width: 1500px;
 	margin: 0 auto;
@@ -27,6 +27,7 @@ body>header{
 }
 	body>header>figure{
 		grid-area: logo;
+		display: none;
 	}
 	body>header>h1{
 		grid-area: titulo;
@@ -35,6 +36,7 @@ body>header{
 
 /*MENU DE NAVEGACION + BARRA BUSCAR*/
 body>nav{
+	display: none;
 	overflow: auto;
 	width: 100%;
 	background-color: #546e7a;
@@ -108,8 +110,8 @@ body>section{
 			body>section>div>article>p>a{
 				color: black;
 			}
-                body > section > div > article > p > a:hover, body > section > div > article > p > a:active {
-                    background-color: white;
+                body > section > div > article > p > a::after{
+                    content: " (" attr(href) ")";
                 }
 			body>section>div>article>figure{
 				grid-area: foto;
@@ -240,8 +242,8 @@ body>section{
 				color: black;
 			}
 			
-			.menu_user_logeado>ul>li>a:hover{
-				background-color: white;
+			.menu_user_logeado>ul>li>a::after{
+				content: " (" attr(href) ")";
 			}
 	
 /*DETALLE FOTO*/
@@ -277,6 +279,7 @@ body>footer{
 		margin-left: 1%;
 	}
 		body>footer>p>a{
+			display: none;
 			color: white;
 			float: right;
 			margin-right: 1%;
@@ -285,42 +288,3 @@ body>footer{
 					background-color: #FFFFFF;
 					color: #336699;
 				}
-
-/* MEDIA QUERIS */
-@media all and (max-width: 480px) {
-	body>section>div{
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-	}
-	body>section>div>article{
-        width: 90%;
-    }
-}
-
-@media all and (min-width: 481px) and (max-width: 980px) {
-	body>section>div{
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: space-around;
-	}
-	body>section>div>article{
-        width: 40%;
-    }
-}
-
-@media all and (max-width: 584px) {
-	.buscador{
-		padding: .25em .4em;
-		background-color: #546e7a;
-		float: left;
-	}
-}
-
-@media all and (max-width: 779px) {
-	body>footer>p>a{
-			color: white;
-			float: none;
-			margin-left: 2%;
-		}
-}
