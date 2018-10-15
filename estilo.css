@@ -11,7 +11,7 @@ body{
 
 /*ESCONDER BARRA DE SCROLL*/
 ::-webkit-scrollbar {
-display: none;
+	display: none;
 }
 
 /*CABECERA*/
@@ -176,7 +176,14 @@ body>section{
 		margin:auto;
 		background-color: white;
 		border-collapse: collapse;
-		
+	}
+
+	.formularios>table>caption{
+		display: none;
+	}
+
+	.formularios>details{
+		display: none;
 	}
 	
 	.formularios>table, td{

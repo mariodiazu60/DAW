@@ -5,15 +5,15 @@
 		<meta name = "description" content="Web de fotos">
 		<title>Fotos</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" type="text/css" href="estilo.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="estilo_imprimir.css" media="print">
-        <link rel="alternate stylesheet" type="text/css" href="estilo_accesible.css" media="screen">
-        <link rel="alternate stylesheet" type="text/css" href="estilo_clasico.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="estilo.css" media="screen" title="Estilo principal">
+        <link rel="stylesheet" type="text/css" href="estilo_imprimir.css" media="print">
+        <link rel="alternate stylesheet" type="text/css" href="estilo_accesible.css" media="screen" title="Estilo accesible">
+        <link rel="alternate stylesheet" type="text/css" href="estilo_clasico.css" media="screen" title="Estilo clásico">
 	</head>
 
 
 	<body>
-		<header>
+		<header id="header">
 			<figure> 
 				<a title="Logotipo" href="index.html"><img src="logo.png" width="180" height="200" alt="Logotipo de la web" ></a>
 			</figure>
@@ -35,6 +35,12 @@
 			<h2>Solicita t&uacute; &aacute;lbum:</h2>
 			
 			<table style="width:40%">
+				<caption>Tabla de precios para solicitar un álbum</caption>
+				<details>
+					<summary>Detalles de la tabla</summary>
+					<p>Dependiendo del concepto escogido el precio por página varía.</p>
+					<p>menos de 5 página, 0.10 euros por página, entre 5 y 10 página, 0.08 euros por página, más de once páginas, 0.07 euros por página, blanco y negro, 0 euros, color, 0.05 euros por foto, resolución mayor que 300 dpi, 0.02 euros por foto</p>
+				</details>
 				<tr>
 					<th>Concepto</th>
 					<th>Tarifa</th> 

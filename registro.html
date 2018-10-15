@@ -5,15 +5,15 @@
 		<meta name = "description" content="Web de fotos">
 		<title>Fotos</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" type="text/css" href="estilo.css" media="screen">
-		<link rel="stylesheet" type="text/css" href="estilo_imprimir.css" media="print">
-        <link rel="alternate stylesheet" type="text/css" href="estilo_accesible.css" media="screen">
-        <link rel="alternate stylesheet" type="text/css" href="estilo_clasico.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="estilo.css" media="screen" title="Estilo principal">
+        <link rel="stylesheet" type="text/css" href="estilo_imprimir.css" media="print">
+        <link rel="alternate stylesheet" type="text/css" href="estilo_accesible.css" media="screen" title="Estilo accesible">
+        <link rel="alternate stylesheet" type="text/css" href="estilo_clasico.css" media="screen" title="Estilo clásico">
 	</head>
 
 
 	<body>
-		<header>
+		<header id="header">
 			<figure> 
 				<a title="Logotipo" href="index.html"><img src="logo.png" width="180" height="200" alt="Logotipo de la web" ></a>
 			</figure>
@@ -75,10 +75,10 @@
 				</select>
 				
 				<label for="foto"> Foto de perfil:</label>
-				<input id="foto" name="foto" type="file">
+				<input id="foto" class="puntero_mano" name="foto" type="file">
 				
 				
-				<input type="submit" value="Enviar" name="Enviar">
+				<input type="submit" class="puntero_mano" value="Enviar" name="Enviar">
 
 			</form>		
 		</section>

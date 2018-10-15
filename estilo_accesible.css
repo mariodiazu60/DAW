@@ -4,9 +4,21 @@
 
 body{
 	font-family: verdana, sans-serif;
-	font-size: 14px;
+	font-size: 24px;
 	max-width: 1500px;
 	margin: 0 auto;
+}
+
+input {
+	font-size: 24px;
+}
+
+textarea {
+	font-size: 24px;
+}
+
+select {
+	font-size: 24px;
 }
 
 /*ESCONDER BARRA DE SCROLL*/
@@ -17,7 +29,7 @@ display: none;
 /*CABECERA*/
 body>header{
 	width: 100%;
-	background-color: #336699;
+	background-color: black;
 	font-weight: bold;
 	color: white;
 	display: grid;
@@ -37,7 +49,7 @@ body>header{
 body>nav{
 	overflow: auto;
 	width: 100%;
-	background-color: #546e7a;
+	background-color: grey;
 }
 body>nav>ul{
 	padding: 0;
@@ -48,22 +60,26 @@ body>nav>ul{
 		padding: 0;
 	}
 		body>nav>ul>li>a{
-			color: #FFFFFF;
+			color: black;
 			text-align: center;
 			padding: .4em .4em;
 			font-weight: bold;
 			display: block;
-			text-decoration: none;
+			/*text-decoration: none;*/
 		}
 			body>nav>ul>li>a:hover, body>nav>ul>li>a:active{
-				background-color: #FFFFFF;
-				color: #666666;
+				background-color: black;
+				color: grey;
 			}
 .buscador{
 	padding: .25em .4em;
-	background-color: #546e7a;
+	background-color: grey;
 	float: right;
 }
+	.buscador>input:focus{
+		background-color: black;
+		color: white;
+	}
 .enlace{
 	/*text-decoration: none;*/
 }
@@ -87,7 +103,7 @@ body>section{
 		body>section>div>article{
 			width: 30%;
 			margin:.5em;
-			background-color: #87d3ff;
+			background-color: yellow;
 			flex-grow: 1;
 			padding: 0;
 			display: grid;
@@ -106,7 +122,8 @@ body>section{
 				color: black;
 			}
                 body > section > div > article > p > a:hover, body > section > div > article > p > a:active {
-                    background-color: white;
+                    background-color: black;
+                    color: yellow;
                 }
 			body>section>div>article>figure{
 				grid-area: foto;
@@ -127,7 +144,7 @@ body>section{
 
 /*FORMULARIOS*/
 .formularios{
-	background-color: #87d3ff;
+	background-color: yellow;
 	text-align: center;
 	padding: 1em 0 0 0;
 	display: flex;
@@ -148,7 +165,7 @@ body>section{
 		}
 
 			.formularios>form>input:focus{
-				background-color: #336699;
+				background-color: black;
 				color: white;
 			}
 		
@@ -159,7 +176,7 @@ body>section{
 		}
 
 			.formularios>form>textarea:focus{
-				background-color: #336699;
+				background-color: black;
 				color: white;
 			}
 		
@@ -167,15 +184,18 @@ body>section{
 			display: block;
 			margin: auto; 
 			margin: .3em auto 1em auto; 
-	}
+		}
 	
 	.formularios>table{
 		margin:auto;
 		background-color: white;
 		border-collapse: collapse;
-		
 	}
 	
+	.formularios>details{
+		display: none;
+	}
+
 	.formularios>table, td{
 		border: 1px solid black;
 		padding: 0.3em;
@@ -183,7 +203,7 @@ body>section{
 	}
 	
 .formulario_buscar{
-	background-color: #87d3ff;
+	background-color: yellow;
 	text-align: center;
 	padding: 2em 0 0 0;
 	display: flex;
@@ -205,13 +225,13 @@ body>section{
 	}
 
 		.formulario_buscar>form>input:focus{
-			background-color: #336699;
+			background-color: black;
 			color: white;
 		}
 
 /*MENU USUARIO LOGEADO*/
 .menu_user_logeado{
-	background-color: #87d3ff;
+	background-color: yellow;
 	padding: 1em 0;
 	display: flex;
 	flex-direction: column;
@@ -238,12 +258,13 @@ body>section{
 			}
 			
 			.menu_user_logeado>ul>li>a:hover{
-				background-color: white;
+				background-color: black;
+				color: yellow;
 			}
 	
 /*DETALLE FOTO*/
 .detalle{
-	background-color: #87d3ff;
+	background-color: yellow;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -265,7 +286,7 @@ body>section{
 
 /*PIE DE PAGINA*/
 body>footer{
-	background-color: #336699;
+	background-color: black;
 	color: white;
 	width: 100%;
 	padding: 1em 0;
@@ -280,5 +301,44 @@ body>footer{
 		}
 			body>footer>p>a:hover, body>footer>p>a:active{
 					background-color: #FFFFFF;
-					color: #336699;
+					color: black;
 				}
+
+/* MEDIA QUERIS */
+@media all and (max-width: 480px) {
+	body>section>div{
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	body>section>div>article{
+        width: 90%;
+    }
+}
+
+@media all and (min-width: 481px) and (max-width: 980px) {
+	body>section>div{
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-around;
+	}
+	body>section>div>article{
+        width: 40%;
+    }
+}
+
+@media all and (max-width: 1053px) {
+	.buscador{
+		padding: .25em .4em;
+		background-color: grey;
+		float: left;
+	}
+}
+
+@media all and (max-width: 1324px) {
+	body>footer>p>a{
+			color: white;
+			float: none;
+			margin-left: 2%;
+		}
+}
