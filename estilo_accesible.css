@@ -342,3 +342,55 @@ body>footer{
 			margin-left: 2%;
 		}
 }
+
+/*medias del formulario de buscar */
+@media all and (min-width: 818px) and (max-width: 1100px) {
+
+	.titulo_formulario_buscar{
+				text-align: center;
+				padding: .5em;
+	}
+
+	.formulario_buscar{
+				display: block;
+				padding: .2em 0 .5em 0;
+	}
+
+	.formulario_buscar>form{
+        padding: auto
+	}
+
+		.formulario_buscar>form>input{
+			display: inline-block;
+			margin: auto;
+		}
+}
+
+@media all and (min-width: 280px) and (max-width: 818px) {
+
+	.titulo_formulario_buscar{
+				text-align: center;
+				padding: .5em;
+	}
+
+	.formulario_buscar{
+				display: block;
+				padding: .2em 0 .5em 0;
+	}
+
+	.formulario_buscar>form{
+        padding: auto
+				text-align: center;
+	}
+
+		.formulario_buscar>form>input{
+			display: block;
+			padding: auto;
+			margin-top: .5em;
+			margin-bottom: 1em;
+		}
+
+		.formulario_buscar>form>label{
+			display: block;
+		}
+}
