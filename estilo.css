@@ -30,7 +30,7 @@ body>header{
 	}
 	body>header>h1{
 		grid-area: titulo;
-		align-self: center;	
+		align-self: center;
 	}
 
 /*MENU DE NAVEGACION + BARRA BUSCAR*/
@@ -65,7 +65,7 @@ body>nav>ul{
 	float: right;
 }
 	.buscador>input:focus{
-		background-color: #87d3ff; 
+		background-color: #87d3ff;
 	}
 .enlace{
 	/*text-decoration: none;*/
@@ -103,7 +103,7 @@ body>section{
 				grid-area: titulo;
 				padding: .5em;
 				margin: .5em;
-				text-align: center;	
+				text-align: center;
 			}
 			body>section>div>article>p>a{
 				color: black;
@@ -117,7 +117,7 @@ body>section{
 				padding-bottom: 1em;
 			}
 				body>section>div>article>figure>a>img{
-					vertical-align: middle;	
+					vertical-align: middle;
 				}
                     body>section>div>article>figure>a>img:hover, body>section>div>article>figure>a>img:active{
                         opacity: 0.8;
@@ -147,31 +147,31 @@ body>section{
 
 		.formularios>form>input{
 			display: block;
-			margin: .3em auto 1em auto; 
+			margin: .3em auto 1em auto;
 		}
 
 			.formularios>form>input:focus{
 				background-color: #336699;
 				color: white;
 			}
-		
+
 		.formularios>form>textarea{
 			display: block;
-			margin: auto; 
-			margin: .3em auto 1em auto; 
+			margin: auto;
+			margin: .3em auto 1em auto;
 		}
 
 			.formularios>form>textarea:focus{
 				background-color: #336699;
 				color: white;
 			}
-		
+
 		.formularios>form>select{
 			display: block;
-			margin: auto; 
-			margin: .3em auto 1em auto; 
+			margin: auto;
+			margin: .3em auto 1em auto;
 	}
-	
+
 	.formularios>table{
 		margin:auto;
 		background-color: white;
@@ -185,33 +185,33 @@ body>section{
 	.formularios>details{
 		display: none;
 	}
-	
+
 	.formularios>table, td{
 		border: 1px solid black;
 		padding: 0.3em;
 		text-align: center;
 	}
-	
+
 .formulario_buscar{
 	background-color: #87d3ff;
 	text-align: center;
-	padding: 2em 0 0 0;
 	display: flex;
 	flex-direction: inline-block;
 }
 
-	.formulario_buscar>h2{
-		padding: 1em 0 1.2em 1em;
+	.titulo_formulario_buscar{
+			padding: 1em 1em 0;
+			background-color: #87d3ff;
+			padding: .5em;
 	}
-	
+
 	.formulario_buscar>form{
-        padding: 1em;
-		align-self: center;
+        padding: .5em 1em;
 	}
 
 	.formulario_buscar>form>input{
 		display: inline-block;
-		margin: auto; 
+		margin: auto;
 	}
 
 		.formulario_buscar>form>input:focus{
@@ -230,7 +230,7 @@ body>section{
 	.menu_user_logeado>h2{
 		align-self: center;
 	}
-	
+
 	.menu_user_logeado>h3{
 		align-self: center;
 	}
@@ -242,15 +242,15 @@ body>section{
 		.menu_user_logeado>ul>li{
 			padding: 1em;
 		}
-	
+
 			.menu_user_logeado>ul>li>a{
 				color: black;
 			}
-			
+
 			.menu_user_logeado>ul>li>a:hover{
 				background-color: white;
 			}
-	
+
 /*DETALLE FOTO*/
 .detalle{
 	background-color: #87d3ff;
@@ -262,7 +262,7 @@ body>section{
 	.detalle>h2{
 		padding: 1em 0 1em 0;
 	}
-		
+
 		.detalle>article>ul{
 			list-style-type: none;
 			overflow: hidden;
@@ -330,4 +330,58 @@ body>footer{
 			float: none;
 			margin-left: 2%;
 		}
+}
+
+/*medias del formulario de buscar */
+@media all and (min-width: 818px) and (max-width: 1100px) {
+
+	.titulo_formulario_buscar{
+				text-align: center;
+				padding: .5em;
+	}
+
+	.formulario_buscar{
+				display: block;
+				padding: .2em 0 .5em 0;
+	}
+
+	.formulario_buscar>form{
+        padding: auto
+	}
+
+		.formulario_buscar>form>input{
+			display: inline-block;
+			margin: auto;
+		}
+}
+
+@media all and (min-width: 280px) and (max-width: 818px) {
+
+	.titulo_formulario_buscar{
+				text-align: center;
+				padding: .5em;
+	}
+
+	.formulario_buscar{
+				display: block;
+				padding: .2em 0 .5em 0;
+	}
+
+	.formulario_buscar>form{
+        padding: auto
+				text-align: center;
+	}
+
+		.formulario_buscar>form>input{
+			display: block;
+			padding: auto;
+			margin-top: .5em;
+			margin-bottom: 1em;
+		}
+
+		.formulario_buscar>form>label{
+			display: block;
+		}
+
+
 }
