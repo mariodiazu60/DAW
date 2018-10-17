@@ -1,5 +1,6 @@
 *{
 	margin: 0;
+	-ms-overflow-style: none;
 }
 
 body{
@@ -231,7 +232,12 @@ body>section{
 	.menu_user_logeado>h3{
 		align-self: center;
 	}
-
+	.menu_user_logeado>p{
+		padding-top: .5em;
+		padding-left: 5%;
+		padding-right: 5%;
+		text-align: center;
+	}
 	.menu_user_logeado>ul{
 		padding: 1em;
 		align-self: center;
