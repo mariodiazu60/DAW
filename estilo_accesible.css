@@ -68,7 +68,7 @@ body>nav>ul{
 			display: block;
 			/*text-decoration: none;*/
 		}
-			body>nav>ul>li>a:hover, body>nav>ul>li>a:active{
+			body>nav>ul>li>a:hover, body>nav>ul>li>a:focus{
 				background-color: black;
 				color: grey;
 			}
@@ -122,7 +122,7 @@ body>section{
 			body>section>div>article>p>a{
 				color: black;
 			}
-                body > section > div > article > p > a:hover, body > section > div > article > p > a:active {
+                body > section > div > article > p > a:hover, body > section > div > article > p > a:focus {
                     background-color: black;
                     color: yellow;
                 }
@@ -134,7 +134,7 @@ body>section{
 				body>section>div>article>figure>a>img{
 					vertical-align: middle;	
 				}
-                    body>section>div>article>figure>a>img:hover, body>section>div>article>figure>a>img:active{
+                    body>section>div>article>figure>a>img:hover, body>section>div>article>figure>a>img:focus{
                         opacity: 0.8;
                     }
 			body>section>div>article>footer{
@@ -305,7 +305,7 @@ body>footer{
 			float: right;
 			margin-right: 1%;
 		}
-			body>footer>p>a:hover, body>footer>p>a:active{
+			body>footer>p>a:hover, body>footer>p>a:focus{
 					background-color: #FFFFFF;
 					color: black;
 				}
