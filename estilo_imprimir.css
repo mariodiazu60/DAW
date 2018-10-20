@@ -1,6 +1,5 @@
 *{
 	margin: 0;
-	-ms-overflow-style: none;
 }
 
 body{
@@ -8,11 +7,7 @@ body{
 	font-size: 14px;
 	max-width: 1500px;
 	margin: 0 auto;
-}
-
-/*ESCONDER BARRA DE SCROLL*/
-::-webkit-scrollbar {
-display: none;
+	overflow: scroll;
 }
 
 /*CABECERA*/
@@ -144,7 +139,7 @@ body>section{
 	}
 
 	.formularios>form{
-        padding: 1em;
+        padding: 0 1em 1em 1em;
 		align-self: center;
 	}
 
@@ -176,7 +171,7 @@ body>section{
 	}
 	
 	.formularios>table{
-		margin:auto;
+		margin: 0 auto 1em auto;
 		background-color: white;
 		border-collapse: collapse;
 	}

@@ -11,6 +11,7 @@
         <link rel="alternate stylesheet" type="text/css" href="estilo_clasico.css" media="screen" title="Estilo clásico">
 	</head>
 
+
 	<body>
 		<header id="header">
 			<figure> 
@@ -31,18 +32,17 @@
 		</nav>
 
 		<section class="formularios">
-			<h2>Inicio de sesi&oacute;n:</h2>
-			<form name="Login" action="control_acceso.php" method="post">
-				<label for="usu"> Usuario:</label>
-				<input type="text" id="usu" name="usu" required>
-					
-				<label for="contra"> Contraseña:</label>
-				<input type="password" id="contra" name="contra" required>
+			<h2>Crea t&uacute; &aacute;lbum:</h2>
+            <form action="">
+                <label for="nomb"> Título:</label>
+                <input type="text" name="tit" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
 
-				<input class="puntero_mano" type="submit" name="Enviar">
-			</form>	
+                <label for="dedic"> Descripción:</label>
+                <textarea rows="4" id="dedic" name="desc" cols="50" maxlength="4000" required></textarea>
+
+                <input class="puntero_mano" type="submit" value="Enviar" name="Enviar">
+            </form>
 		</section>
-
 
 		<footer>
 			<p>Mario D&iacute;az-Ufano Nuevo / Antonio Hern&aacute;ndez Velasco | DAW / Ingenier&iacute;a Multimedia / UA | <span>&copy;</span><time datetime="2018">2018</time><a href="declaracion_accesibilidad.html">Accesibilidad</a><a class="enlace" href="#header">Ir arriba</a></p>

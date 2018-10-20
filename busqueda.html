@@ -24,7 +24,7 @@
 				<li><a class="enlace" href="index.html">Inicio</a></li>
 				<li><a class="enlace" href="busqueda.html">B&uacute;squeda</a></li>
 			</ul>
-			<form name="busqueda" class="buscador" action="res_busqueda.html">
+			<form name="busqueda" class="buscador" action="res_busqueda.php">
 				<input type="search" placeholder="Buscar">
                 <input class="puntero_mano" type="submit" name="Enviar">
 			</form>
@@ -32,7 +32,7 @@
 
 		<h2 class="titulo_formulario_buscar">B&uacute;squeda por filtros:</h2>
 		<section class="formulario_buscar">
-			<form name="busquedaPorCriterios" action="res_busqueda.html">
+			<form name="busquedaPorCriterios" action="res_busqueda.php" method="post">
 				<label for="tit"> T&iacute;tulo:</label>
 				<input id="tit" name="tit" type="text">
 
@@ -45,8 +45,8 @@
 				<label for="pais"> Pa&iacute;s:</label>
                 <select name="pais" id="pais">
                     <option value="0">España</option>
-                    <option value="1">Alemania</option>
-                    <option value="2">Francia</option>
+                    <option value="1">Francia</option>
+                    <option value="2">Alemania</option>
                 </select>
 
 				<input class="puntero_mano" type="submit" name="Enviar">
