@@ -51,37 +51,37 @@
 						echo "<li>Contraseña: ".$contra."</li>";
 						echo "<li>Correo electrónico: ".$correo."</li>";
 
-						if (isset($sexo)) {
-							if ($sexo == 0) {
+						if (!empty($sexo)) {
+							if ($sexo == 1) {
 								$sexo = "Mujer";
-							} elseif ($sexo == 1) {
-								$sexo = "Hombre";
 							} elseif ($sexo == 2) {
-								$sexo = "Otro";
+								$sexo = "Hombre";
 							} elseif ($sexo == 3) {
+								$sexo = "Otro";
+							} elseif ($sexo == 4) {
 								$sexo = "Prefiero no decirlo";
 							}
 							echo "<li>Sexo: ".$sexo."</li>";
 						}
-						if (isset($fnac)) {
+						if (!empty($fnac)) {
 							echo "<li>Fecha de nacimiento: ".$fnac."</li>";
 						}
-						if (isset($pais)) {
-							if ($pais == 0) {
+						if (!empty($pais)) {
+							if ($pais == 1) {
 								$pais = "España";
-							} elseif ($pais == 1) {
-								$pais = "Francia";
 							} elseif ($pais == 2) {
+								$pais = "Francia";
+							} elseif ($pais == 3) {
 								$pais = "Alemania";
 							}
 							echo "<li>País de residencia: ".$pais."</li>";
 						}
-						if (isset($city)) {
-							if ($city == 0) {
+						if (!empty($city)) {
+							if ($city == 1) {
 								$city = "Álava";
-							} elseif ($city == 1) {
-								$city = "Albacete";
 							} elseif ($city == 2) {
+								$city = "Albacete";
+							} elseif ($city == 3) {
 								$city = "Alicante";
 							}
 							echo "<li>Ciudad: ".$city."</li>";

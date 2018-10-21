@@ -25,7 +25,7 @@
 				<li><a href="index.html">Inicio</a></li>
 				<li><a href="busqueda.html">B&uacute;squeda</a></li>
 			</ul>
-			<form name="busqueda" class="buscador" action="res_busqueda.html">
+			<form name="busqueda" class="buscador" action="res_busqueda.php">
 				<input type="search" placeholder="Buscar">
                 <input class="puntero_mano" type="submit" name="Enviar">
 			</form>
@@ -39,11 +39,23 @@
 					<img src="camaleon2.jpg" alt="Imagen temporal" width="250" height="250">
 				</figure>
 				<ul>
-					<li>Usuario: Pepito P&eacute;rez</li>
-					<li>T&iacute;tulo: Camale&oacute;n</li>
-					<li>&Aacute;lbum: Animales</li>
-					<li>Fecha: <time datetime="2018-09-24">24/09/2018</time></li>
-					<li>Pa&iacute;s: Espa&ntilde;a</li>
+					<?php
+						$id = $_GET["id"];
+
+						if (($id%2)==0) {
+							echo "<li>Usuario: Pepito Pérez</li>";
+							echo "<li>Título: Camaleón</li>";
+							echo "<li>Álbum: Animales</li>";
+							echo "<li>Fecha: <time datetime=\"2018-09-24\">24/09/2018</time></li>";
+							echo "<li>País: España</li>";
+						} else {
+							echo "<li>Usuario: Manolo Lama</li>";
+							echo "<li>Título: Lagarto cabreado</li>";
+							echo "<li>Álbum: Reptiles</li>";
+							echo "<li>Fecha: <time datetime=\"2018-10-21\">21/10/2018</time></li>";
+							echo "<li>País: Francia</li>";
+						}
+					?>
 				</ul>
 			</article>
 		</section>

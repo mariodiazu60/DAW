@@ -7,7 +7,7 @@ body{
 	font-size: 14px;
 	max-width: 1500px;
 	margin: 0 auto;
-	overflow: scroll;
+	overflow-y: scroll;
 }
 
 /*CABECERA*/

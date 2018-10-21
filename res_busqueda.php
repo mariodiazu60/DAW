@@ -38,21 +38,21 @@
                 $fecha2 = $_POST["date2"];
                 $pais = $_POST["pais"];
 
-                if (isset($tit)) {
+                if (!empty($tit)) {
                     echo "<p><b>Título: ".$tit."</b></p>";
                 }
-                if (isset($fecha1)) {
+                if (!empty($fecha1)) {
                     echo "<p><b>Desde: ".$fecha1."</b></p>";
                 }
-                if (isset($fecha2)) {
+                if (!empty($fecha2)) {
                     echo "<p><b>Hasta: ".$fecha2."</b></p>";
                 }
-                if (isset($pais)) {
-                    if ($pais == 0) {
+                if (!empty($pais)) {
+                    if ($pais == 1) {
                         $pais = "España";
-                    } elseif ($pais == 1) {
-                        $pais = "Francia";
                     } elseif ($pais == 2) {
+                        $pais = "Francia";
+                    } elseif ($pais == 3) {
                         $pais = "Alemania";
                     }
                     echo "<p><b>País: ".$pais."</b></p>";
@@ -62,7 +62,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=1"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
@@ -72,7 +72,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=2"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
@@ -82,7 +82,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=3"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
@@ -92,7 +92,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=4"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
@@ -102,7 +102,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=5"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
@@ -112,7 +112,7 @@
                 <article>
                     <p>T&iacute;tulo de la foto</p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.html"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=6"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                     <footer>
                         <p>Fecha | Pa&iacute;s</p>
