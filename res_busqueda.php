@@ -13,7 +13,7 @@
 
 	<body>
 		<header id="header">
-			<figure> 
+			<figure>
 				<a title="Logotipo" href="index.html"><img src="logo.png" width="180" height="200" alt="Logotipo de la web" ></a>
 			</figure>
 			<h1>PI - Pictures & images</h1>
@@ -30,8 +30,8 @@
 			</form>
 		</nav>
 
-		<section>
-            <h2>Resultado de la b&uacute;squeda:</h2>
+		<h2 class="titulo_filtros_busq">Resultado de la b&uacute;squeda:</h2>
+		<section class="filtros_busq">
             <?php
                 $tit = $_POST["tit"];
                 $fecha1 = $_POST["date1"];
