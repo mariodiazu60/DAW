@@ -2,6 +2,12 @@
 	$title = "Inicio";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+
+    if (isset($_COOKIE['usuario_recordado'])) {
+        $valores = explode(" ", $_COOKIE['usuario_recordado']);
+        $fechayhora = date("Y-m-d H:i");
+        setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora, time() + 90 * 24 * 60 * 60);
+    }
 ?>
 		<nav>
 			<ul>

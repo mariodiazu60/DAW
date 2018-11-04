@@ -1,4 +1,5 @@
 <?php
+	$title = "Iniciar sesión";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 ?>
@@ -16,18 +17,15 @@
 
 		<section class="formularios">
 			<h2>Inicio de sesi&oacute;n:</h2>
-			<form name="Login" action="control_acceso.php" method="post">
-				<label for="usu"> Usuario:</label>
-				<input type="text" id="usu" name="usu" required>
-
-				<label for="contra"> Contraseña:</label>
-				<input type="password" id="contra" name="contra" required>
-
-        <label for="recordar"> Recordarme en este equipo: </label>
-        <input type="checkbox" id="recordar" name="recordar">
-
-				<input class="puntero_mano" type="submit" name="Enviar">
-			</form>
+			<?php
+				if (isset($_COOKIE['usuario_recordado'])) {
+			    	$valores = explode(" ", $_COOKIE['usuario_recordado']);
+			    	echo "<p>Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3].".</p>";
+			    	echo "<a href='control_salida.php'>Salir</a>";
+			    } else {
+			    	require_once("../Plantilla/login.inc");
+			    }
+			?>
 		</section>
 <?php
     require_once("../Plantilla/pie.inc");
