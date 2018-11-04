@@ -1,6 +1,7 @@
 ﻿<?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Resultado solicitud álbum";
+    require_once("../Plantilla/../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -99,5 +100,5 @@
 			?>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>

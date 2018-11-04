@@ -1,6 +1,7 @@
 ﻿<?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Inicio";
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -20,37 +21,37 @@
                 <article>
                     <p><a class="enlace" href=""> Autor</a></p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=1"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=1"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                 </article>
                 <article>
                     <p><a class="enlace" href=""> Autor</a></p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=2"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
-
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=3"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=2"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                 </article>
 
                 <article>
                     <p><a class="enlace" href=""> Autor</a></p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=4"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=3"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                    </figure>
+                </article>
+
+                <article>
+                    <p><a class="enlace" href=""> Autor</a></p>
+                    <figure>
+                        <a title="Imagen temporal" href="detalle.php?id=4"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                 </article>
                 <article>
                     <p><a class="enlace" href=""> Autor</a></p>
                     <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=5"><img src="camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
+                        <a title="Imagen temporal" href="detalle.php?id=5"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
                     </figure>
                 </article>
             </div>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>

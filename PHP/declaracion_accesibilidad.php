@@ -1,6 +1,7 @@
 <?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Accesibilidad";
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -21,5 +22,5 @@
 			<p>Para activar la hoja de estilo se tiene que acceder al menú "Ver" de Mozilla Firefox, seleccionar la opción "Estilo de página" y el Estilo accesible.</p>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>

@@ -1,6 +1,7 @@
 <?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Error inicio de sesión";
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -20,5 +21,5 @@
 			<p><b>Los datos introducidos no son válidos</b></p>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>

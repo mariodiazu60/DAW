@@ -1,6 +1,7 @@
 ﻿<?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Detalle de foto";
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -18,7 +19,7 @@
 
 			<article>
 				<figure> 
-					<img src="camaleon2.jpg" alt="Imagen temporal" width="250" height="250">
+					<img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width="250" height="250">
 				</figure>
 				<ul>
 					<?php
@@ -42,5 +43,5 @@
 			</article>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>

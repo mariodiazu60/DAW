@@ -1,6 +1,7 @@
 <?php
-    require_once("cabecera.inc");
-    require_once("inicio.inc");
+	$title = "Iniciar sesión";
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<ul>
@@ -27,5 +28,5 @@
 			</form>
 		</section>
 <?php
-    require_once("pie.inc");
+    require_once("../Plantilla/pie.inc");
 ?>
