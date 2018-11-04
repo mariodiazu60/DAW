@@ -16,7 +16,7 @@
 				}
 				setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
 			}
-			header("Location: http://localhost/DAW/menu_user_logeado.php");
+			header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 			exit;
 
 	} elseif ($usuario == $usu2 && $contra == $contra2) {
@@ -26,7 +26,7 @@
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
 				}
-				header("Location: http://localhost/DAW/menu_user_logeado.php");
+				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
 	} elseif ($usuario == $usu3 && $contra == $contra3) {
 				if ($recordar == 'on') {
@@ -35,7 +35,7 @@
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
 				}
-				header("Location: http://localhost/DAW/menu_user_logeado.php");
+				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
 	} elseif ($usuario == $usu4 && $contra == $contra4) {
 				if ($recordar == 'on') {
@@ -44,10 +44,10 @@
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
 				}
-				header("Location: http://localhost/DAW/menu_user_logeado.php");
+				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
 		} else {
-			header("Location: http://localhost/DAW/error_login.php");
+			header("Location: http://localhost/DAW/PHP/error_login.php");
 			exit;
 		}
 ?>
