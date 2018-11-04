@@ -4,11 +4,15 @@
     require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
-			<ul>
-				<li><a href="index.php">Inicio</a></li>
-				<li><a href="busqueda.php">B&uacute;squeda</a></li>
-				<li><a href="registro.php">Registro</a></li>
-			</ul>
+			<?php
+                if (isset($_COOKIE['usuario_recordado'])) {
+                    require_once("../Plantilla/nav_si.inc");
+                } elseif (isset($_SESSION['usuario_sesion'])) {
+                    require_once("../Plantilla/nav_si.inc");
+                } else {
+                    require_once("../Plantilla/nav_no.inc");
+                }
+            ?>
 			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
 				<input type="search" name="buscar" placeholder="Buscar">
                 <input class="puntero_mano" type="submit" name="Enviar">
