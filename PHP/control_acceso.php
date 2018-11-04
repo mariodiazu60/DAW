@@ -11,10 +11,14 @@
 
 	if ($usuario == $usu1 && $contra == $contra1) {
 			if ($recordar == 'on') {
-				if(isset($_COOKIE['usuario_recordado'])){
-					setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
-				}
-				setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
+					if(isset($_COOKIE['usuario_recordado'])){
+						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
+					}
+					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
+			}	else{
+					session_start();
+					unset($_SESSION['usuario_sesion']);
+					$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra;
 			}
 			header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 			exit;
@@ -25,6 +29,10 @@
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
+				} else{
+						session_start();
+						unset($_SESSION['usuario_sesion']);
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
@@ -34,6 +42,10 @@
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
+				} else{
+						session_start();
+						unset($_SESSION['usuario_sesion']);
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
@@ -43,6 +55,10 @@
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
 					setcookie("usuario_recordado", $usuario . ' ' . $contra, time() + 90 * 24 * 60 * 60);
+				} else{
+						session_start();
+						unset($_SESSION['usuario_sesion']);
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;

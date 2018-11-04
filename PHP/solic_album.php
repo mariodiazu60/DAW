@@ -2,6 +2,10 @@
     $title = "Solicitud de álbum";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+    session_start();
+    if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+      header("Location: http://localhost/DAW/PHP/index.php");
+    }
 ?>
 		<nav>
 			<ul>
@@ -16,7 +20,7 @@
 
 		<section class="formularios">
 			<h2>Solicita t&uacute; &aacute;lbum:</h2>
-			
+
 			<table style="width:40%">
 				<caption>Tabla de precios para solicitar un álbum</caption>
 				<details>
@@ -26,7 +30,7 @@
 				</details>
 				<tr>
 					<th>Concepto</th>
-					<th>Tarifa</th> 
+					<th>Tarifa</th>
 				</tr>
 				<tr>
 					<td> &lt; 5 p&aacute;g</td>
@@ -54,7 +58,7 @@
 					<td> 0.02 € por foto</td>
 				</tr>
 		    </table>
-			
+
             <form action="res_solic_album.php" method="post">
                 <label for="nomb"> Nombre(*):</label>
                 <input type="text" name="nomb" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>

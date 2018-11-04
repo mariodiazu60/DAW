@@ -2,6 +2,10 @@
 	$title = "Detalle de foto";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+		session_start();
+		if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+			header("Location: http://localhost/DAW/PHP/index.php");
+		}
 ?>
 		<nav>
 			<ul>
@@ -18,7 +22,7 @@
 			<h2>Detalles de la foto:</h2>
 
 			<article>
-				<figure> 
+				<figure>
 					<img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width="250" height="250">
 				</figure>
 				<ul>

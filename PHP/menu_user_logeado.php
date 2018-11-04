@@ -2,6 +2,10 @@
 	$title = "Menú de usuario";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+		session_start();
+		if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+			header("Location: http://localhost/DAW/PHP/index.php");
+		}
 ?>
 		<nav>
 			<ul>
@@ -15,6 +19,15 @@
 		</nav>
 
 		<section class="menu_user_logeado">
+			 <?php
+			 if(isset($_COOKIE['usuario_recordado'])){
+				 		$nombre_cookie = explode(" ", $_COOKIE['usuario_recordado']);
+						echo $nombre_cookie[0];
+			 } else{
+						 $nombre_sesion = explode(" ", $_SESSION['usuario_sesion']);
+						 echo $nombre_sesion[0];
+			 } ?>
+
 			<h2>Men&uacute; de cuenta:</h2>
 			<ul>
 				<li><a href="">Modificar mis datos</a></li>
@@ -22,6 +35,7 @@
 				<li><a href="crear_album.php">Crear &aacute;lbum</a></li>
 				<li><a href="solic_album.php">Solicitar &aacute;lbum</a></li>
 				<li><a href="">Darme de baja</a></li>
+				<li><a href="control_salida.php">Cerrar sesión</a></li>
 			</ul>
 		</section>
 <?php
