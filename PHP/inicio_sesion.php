@@ -1,5 +1,4 @@
 <?php
-	$title = "Iniciar sesión";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 ?>
@@ -23,6 +22,9 @@
 
 				<label for="contra"> Contraseña:</label>
 				<input type="password" id="contra" name="contra" required>
+
+        <label for="recordar"> Recordarme en este equipo: </label>
+        <input type="checkbox" id="recordar" name="recordar">
 
 				<input class="puntero_mano" type="submit" name="Enviar">
 			</form>
