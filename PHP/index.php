@@ -7,6 +7,10 @@
         $valores = explode(" ", $_COOKIE['usuario_recordado']);
         $fechayhora = date("Y-m-d H:i");
         setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora, time() + 90 * 24 * 60 * 60);
+    } elseif (isset($_SESSION['usuario_sesion'])) {
+        session_start();
+        unset($_SESSION['usuario_sesion']);
+        $_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
     }
 ?>
 		<nav>
