@@ -1,21 +1,23 @@
 ﻿<?php
-	$title = "Inicio";
-    require_once("../Plantilla/cabecera.inc");
-    require_once("../Plantilla/inicio.inc");
-
-    if (isset($_COOKIE['usuario_recordado'])) {
+	session_start();
+    if (isset($_COOKIE['usuario_recordado'])==true) {
         $valores = explode(" ", $_COOKIE['usuario_recordado']);
         $fechayhora = date("Y-m-d H:i");
-        setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora, time() + 90 * 24 * 60 * 60);
-    } elseif (isset($_SESSION['usuario_sesion'])) {
-        session_start();
+        setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora.' '.$valores[4], time() + 90 * 24 * 60 * 60);
+    } elseif (isset($_SESSION['usuario_sesion'])==true) {
+    	$valores = explode(" ", $_SESSION['usuario_sesion']);
         unset($_SESSION['usuario_sesion']);
-        $_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
+        $fechayhora = date("Y-m-d H:i");
+        $_SESSION['usuario_sesion'] = $valores[0] . ' ' . $valores[1] . ' ' . $fechayhora . ' ' . $valores[4];
     }
+
+	$title = "Inicio";
+    include 'selector_css.php';
+    require_once("../Plantilla/cabecera.inc");
+    require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<?php
-				session_start();
                 if (isset($_COOKIE['usuario_recordado'])) {
                     require_once("../Plantilla/nav_si.inc");
                 } elseif (isset($_SESSION['usuario_sesion'])) {

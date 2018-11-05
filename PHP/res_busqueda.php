@@ -5,6 +5,7 @@
 ?>
 		<nav>
 			<?php
+                session_start();
                 if (isset($_COOKIE['usuario_recordado'])) {
                     require_once("../Plantilla/nav_si.inc");
                 } elseif (isset($_SESSION['usuario_sesion'])) {

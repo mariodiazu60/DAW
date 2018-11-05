@@ -3,6 +3,7 @@
 	$contra = $_POST['contra'];
 	$recordar = $_POST['recordar'];
 	$fechayhora = date("Y-m-d H:i");
+	$estilo = "../Estilo/estilo.css";
 	$usu1 = "usu1"; $contra1 = "contra1";
 	$usu2 = "usu2"; $contra2 = "contra2";
 	$usu3 = "usu3"; $contra3 = "contra3";
@@ -14,11 +15,11 @@
 					if(isset($_COOKIE['usuario_recordado'])){
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora, time() + 90 * 24 * 60 * 60);
+					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 			}	else{
 					session_start();
 					unset($_SESSION['usuario_sesion']);
-					$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
+					$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 			}
 			header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 			exit;
@@ -28,11 +29,11 @@
 					if(isset($_COOKIE['usuario_recordado'])){
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora, time() + 90 * 24 * 60 * 60);
+					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
 						unset($_SESSION['usuario_sesion']);
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
@@ -41,11 +42,11 @@
 					if(isset($_COOKIE['usuario_recordado'])){
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora, time() + 90 * 24 * 60 * 60);
+					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
 						unset($_SESSION['usuario_sesion']);
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;
@@ -54,11 +55,11 @@
 					if(isset($_COOKIE['usuario_recordado'])){
 						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 					}
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora, time() + 90 * 24 * 60 * 60);
+					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
 						unset($_SESSION['usuario_sesion']);
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora;
+						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}
 				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
 				exit;

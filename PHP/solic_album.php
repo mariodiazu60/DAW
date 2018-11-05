@@ -4,7 +4,7 @@
     require_once("../Plantilla/inicio.inc");
     session_start();
     if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
-      header("Location: http://localhost/DAW/PHP/index.php");
+        header("Location: http://localhost/DAW/PHP/index.php");
     }
 ?>
 		<nav>
