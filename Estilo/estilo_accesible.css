@@ -150,6 +150,19 @@ body>section{
 		margin: 0 0 1em 0;
 	}
 
+	.formularios>p{
+		margin-bottom: 1em;
+	}
+
+	.formularios>p>a{
+		color: black;
+	}
+
+	.formularios>p>a:hover{
+		background-color: black;
+		color: yellow;
+	}
+
 	.formularios>form{
         padding: 0 1em 1em 1em;
 		align-self: center;

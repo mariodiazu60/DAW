@@ -136,6 +136,18 @@ body>section{
 		margin: 0 0 1em 0;
 	}
 
+	.formularios>p{
+		margin-bottom: 1em;
+	}
+
+	.formularios>p>a{
+		color: black;
+	}
+
+	.formularios>p>a:hover{
+		background-color: white;
+	}
+
 	.formularios>form{
         padding: 0 1em 1em 1em;
 		align-self: center;
@@ -229,6 +241,8 @@ body>section{
 
 	.menu_user_logeado>h3{
 		align-self: center;
+		padding-top: .5%;
+		padding-bottom: .5em;
 	}
 	.menu_user_logeado>p{
 		padding-top: .5em;
