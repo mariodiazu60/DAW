@@ -1,11 +1,11 @@
 <?php
+    include 'pre_cabecera.php';
 	$title = "Iniciar sesión";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 ?>
 		<nav>
 			<?php
-				session_start();
                 if (isset($_COOKIE['usuario_recordado'])) {
                     require_once("../Plantilla/nav_si.inc");
                 } elseif (isset($_SESSION['usuario_sesion'])) {

@@ -1,11 +1,11 @@
 ﻿<?php
+    include 'pre_cabecera.php';
 	$title = "Menú de usuario";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
-		session_start();
-		if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
-			header("Location: http://localhost/DAW/PHP/index.php");
-		}
+	if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+		header("Location: http://localhost/DAW/PHP/index.php");
+	}
 ?>
 		<nav>
 			<?php
