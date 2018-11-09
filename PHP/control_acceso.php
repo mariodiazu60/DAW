@@ -18,7 +18,6 @@
 					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 			}	else{
 					session_start();
-					unset($_SESSION['usuario_sesion']);
 					$estilo = "estilo.css";
 					$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 			}
@@ -34,7 +33,6 @@
 					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
-						unset($_SESSION['usuario_sesion']);
 						$estilo = "estilo_accesible.css";
 						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}
@@ -49,7 +47,6 @@
 					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
-						unset($_SESSION['usuario_sesion']);
 						$estilo = "estilo_clasico.css";
 						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}
@@ -64,7 +61,6 @@
 					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
 				} else{
 						session_start();
-						unset($_SESSION['usuario_sesion']);
 						$estilo = "estilo_accesible.css";
 						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
 				}

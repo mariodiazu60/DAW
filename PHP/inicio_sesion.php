@@ -24,17 +24,7 @@
 			<h2>Inicio de sesi&oacute;n:</h2>
 			<p>
 			<?php
-				if (isset($_COOKIE['usuario_recordado'])) {
-			    	$valores = explode(" ", $_COOKIE['usuario_recordado']);
-			    	echo "Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3].".<br><br>";
-			    	echo "<a href='control_salida.php'>Salir</a>";
-			    } elseif (isset($_SESSION['usuario_sesion'])) {
-			    	$valores = explode(" ", $_SESSION['usuario_sesion']);
-			    	echo "Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3].".<br><br>";
-			    	echo "<a href='control_salida.php'>Salir</a>";
-			    } else {
-			    	require_once("../Plantilla/login.inc");
-			    }
+			    require_once("../Plantilla/login.inc");
 			?>
 			</p>
 		</section>

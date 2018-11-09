@@ -25,13 +25,14 @@
 
 		<section class="menu_user_logeado">
 			<?php
-			if(isset($_COOKIE['usuario_recordado'])){
-					 $nombre_cookie = explode(" ", $_COOKIE['usuario_recordado']);
-					 echo "<h3> ¡Hola " . $nombre_cookie[0] . "! </h3>";
-			} else{
-						$nombre_sesion = explode(" ", $_SESSION['usuario_sesion']);
-					 echo "<h3> ¡Hola " . $nombre_sesion[0] . "! </h3>";
-			}	?>
+				if(isset($_COOKIE['usuario_recordado'])){
+					$valores = explode(" ", $_COOKIE['usuario_recordado']);
+					echo "<h3> ¡Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3]."! </h3>";
+				} else{
+					$valores = explode(" ", $_SESSION['usuario_sesion']);
+					 echo "<h3> ¡Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3]."! </h3>";
+				}	
+			?>
 
 			<h2>Men&uacute; de cuenta:</h2>
 			<ul>
