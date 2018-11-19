@@ -34,10 +34,30 @@
 
 				<label for="pais"> Pa&iacute;s:</label>
                 <select name="pais" id="pais">
-                	<option value="0">Elegir</option>
-                    <option value="1">España</option>
-                    <option value="2">Francia</option>
-                    <option value="3">Alemania</option>
+                	<?php
+						$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+					    if (!$enlace) {
+					    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+	   						echo '</p>'; 
+	   						exit;
+					    }
+
+					    $sentencia = "SELECT * from paises";
+
+					    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+						   echo '</p>';
+						   exit; 
+						}
+
+						while ($fila = mysqli_fetch_assoc($resultado)) {
+							echo "<option value='".$fila['IdPais']."'>".$fila['NomPais']."</option>";
+						}
+
+						mysqli_free_result($resultado);
+		            	mysqli_close($enlace);
+					?>
                 </select>
 
 				<input class="puntero_mano" type="submit" name="Enviar">

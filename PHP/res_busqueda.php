@@ -53,65 +53,38 @@
                 }
             ?>
             <div>
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=1"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                <?php
+                    $enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=2"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                    if (!$enlace) {
+                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+                        echo '</p>'; 
+                        exit;
+                    }
 
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=3"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                    $sentencia = "SELECT Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
 
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=4"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+                       echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                       echo '</p>';
+                       exit; 
+                    }
 
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=5"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                        echo "<article>";
+                        echo "<p>".$fila['Titulo']."</p>";
+                        echo "<figure>";
+                        echo "<a title='".$fila['Descripcion']."' href='detalle.php?id=1'><img src='../Imagenes/".$fila['Fichero'].".jpg' alt='".$fila['Alternativo']."' width=100% height=100%></a>";
+                        echo "</figure>";
+                        echo "<footer>";
+                        echo "<p>".$fila['Fecha']." | ".$fila['NomPais']."</p>";
+                        echo "</footer>";
+                        echo "</article>";
+                    }
 
-                <article>
-                    <p>T&iacute;tulo de la foto</p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=6"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                    <footer>
-                        <p>Fecha | Pa&iacute;s</p>
-                    </footer>
-                </article>
+                    mysqli_free_result($resultado);
+                    mysqli_close($enlace);
+                ?>
             </div>
 		</section>
 <?php

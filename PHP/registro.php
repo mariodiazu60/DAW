@@ -38,11 +38,8 @@
 				
 				<label for="sex"> Sexo:</label>
 			    <select name="sex" id="sex">
-			    	<option value="0">Elegir</option>
+					<option value="0">Hombre</option>
 					<option value="1">Mujer</option>
-					<option value="2">Hombre</option>
-					<option value="3">Otro</option>
-					<option value="4">Prefiero no decirlo</option>
 				</select>
 				
 				<label for="fecha"> Fecha de nacimiento:</label>
@@ -50,10 +47,30 @@
 				
 				<label for="pais"> Pa&iacute;s de residencia:</label>
 				<select name="pais" id="pais">
-					<option value="0">Elegir</option>
-					<option value="1">España</option>
-					<option value="2">Francia</option>
-					<option value="3">Alemania</option>
+					<?php
+						$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+					    if (!$enlace) {
+					    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+	   						echo '</p>'; 
+	   						exit;
+					    }
+
+					    $sentencia = "SELECT * from paises";
+
+					    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+						   echo '</p>';
+						   exit; 
+						}
+
+						while ($fila = mysqli_fetch_assoc($resultado)) {
+							echo "<option value='".$fila['IdPais']."'>".$fila['NomPais']."</option>";
+						}
+
+						mysqli_free_result($resultado);
+		            	mysqli_close($enlace);
+					?>
 				</select>
 				
 				<label for="ciud"> Ciudad:</label>

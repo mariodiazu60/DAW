@@ -23,38 +23,38 @@
 
 		<section>
             <div>
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=1"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=2"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
+            	<?php
+            		$enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=3"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
+				    if (!$enlace) {
+				    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+   						echo '</p>'; 
+   						exit;
+				    }
 
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=4"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
-                <article>
-                    <p><a class="enlace" href=""> Autor</a></p>
-                    <figure>
-                        <a title="Imagen temporal" href="detalle.php?id=5"><img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width=100% height=100%></a>
-                    </figure>
-                </article>
+				    $sentencia = "SELECT Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY 'FRegistro' DESC LIMIT 5";
+
+				    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+					   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+					   echo '</p>';
+					   exit; 
+					}
+
+					while ($fila = mysqli_fetch_assoc($resultado)) {
+		                echo "<article>";
+		                echo "<p>".$fila['Titulo']."</p>";
+		                echo "<figure>";
+		                echo "<a title='".$fila['Descripcion']."' href='detalle.php?id=1'><img src='../Imagenes/".$fila['Fichero'].".jpg' alt='".$fila['Alternativo']."' width=100% height=100%></a>";
+		                echo "</figure>";
+		                echo "<footer>";
+		                echo "<p>".$fila['Fecha']." | ".$fila['NomPais']."</p>";
+		                echo "</footer>";
+		                echo "</article>";
+		            }
+
+		            mysqli_free_result($resultado);
+		            mysqli_close($enlace);
+	            ?>
             </div>
 		</section>
 <?php
