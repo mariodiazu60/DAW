@@ -79,9 +79,30 @@
 
                 <label for="pais"> Pa&iacute;s(*):</label>
                 <select name="pais" id="pais">
-                    <option value="0">España</option>
-                    <option value="1">Alemania</option>
-                    <option value="2">Francia</option>
+                    <?php
+                        $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+                        if (!$enlace) {
+                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+                            echo '</p>'; 
+                            exit;
+                        }
+
+                        $sentencia = "SELECT * from paises";
+
+                        if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                           echo '</p>';
+                           exit; 
+                        }
+
+                        while ($fila = mysqli_fetch_assoc($resultado)) {
+                            echo "<option value='".$fila['IdPais']."'>".$fila['NomPais']."</option>";
+                        }
+
+                        mysqli_free_result($resultado);
+                        mysqli_close($enlace);
+                    ?>
                 </select>
 
                 <label for="prov"> Provincia/regi&oacute;n(*):</label>
@@ -117,9 +138,36 @@
 
                 <label for="imp"> &Aacute;lbum a imprimir(*):</label>
                 <select name="imp" id="imp">
-                    <option value="0">Vacaciones 2017</option>
-                    <option value="1">Vacaciones 2018</option>
-                    <option value="2">Mejores momentos</option>
+                    <?php
+                        if(isset($_COOKIE['usuario_recordado'])){
+                            $valores = explode(" ", $_COOKIE['usuario_recordado']);
+                        } else{
+                            $valores = explode(" ", $_SESSION['usuario_sesion']);
+                        }   
+
+                        $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+                        if (!$enlace) {
+                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+                            echo '</p>'; 
+                            exit;
+                        }
+
+                        $sentencia = "SELECT IdAlbum, Titulo from usuarios, albumes where NomUsuario='$valores[0]' AND IdUsuario=Usuario";
+
+                        if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                           echo '</p>';
+                           exit; 
+                        }
+
+                        while ($fila = mysqli_fetch_assoc($resultado)) {
+                            echo "<option value='".$fila['IdAlbum']."'>".$fila['Titulo']."</option>";
+                        }
+
+                        mysqli_free_result($resultado);
+                        mysqli_close($enlace);
+                    ?>
                 </select>
 
                 <label for="res"> Resoluci&oacute;n de las fotos:</label>

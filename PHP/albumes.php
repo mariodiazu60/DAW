@@ -1,9 +1,11 @@
-﻿<?php
+<?php
     include 'pre_cabecera.php';
-	$title = "Inicio";
-    //include 'selector_css.php';
+	$title = "Menú de usuario";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+	if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+		header("Location: http://localhost/DAW/PHP/index.php");
+	}
 ?>
 		<nav>
 			<?php
@@ -21,9 +23,16 @@
 			</form>
 		</nav>
 
-		<section>
-            <div>
-            	<?php
+		<section class="menu_user_logeado">
+			<h2>Mis álbumes:</h2>
+			<ul>
+				<?php
+					if(isset($_COOKIE['usuario_recordado'])){
+						$valores = explode(" ", $_COOKIE['usuario_recordado']);
+					} else{
+						$valores = explode(" ", $_SESSION['usuario_sesion']);
+					}
+
             		$enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
 				    if (!$enlace) {
@@ -32,7 +41,7 @@
    						exit;
 				    }
 
-				    $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY FRegistro DESC LIMIT 5";
+				    $sentencia = "SELECT IdAlbum, Titulo, Descripcion from usuarios, albumes WHERE NomUsuario='$valores[0]' AND Usuario=IdUsuario";
 
 				    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
 					   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
@@ -41,21 +50,14 @@
 					}
 
 					while ($fila = mysqli_fetch_assoc($resultado)) {
-		                echo "<article>";
-		                echo "<p>".$fila['Titulo']."</p>";
-		                echo "<figure>";
-		                echo "<a title='".$fila['Descripcion']."' href='detalle.php?id=".$fila['IdFoto']."'><img src='../Imagenes/".$fila['Fichero']."' alt='".$fila['Alternativo']."' width=100% height=100%></a>";
-		                echo "</figure>";
-		                echo "<footer>";
-		                echo "<p>".$fila['Fecha']." | ".$fila['NomPais']."</p>";
-		                echo "</footer>";
-		                echo "</article>";
+		                echo "<li><a href='ver_album.php?id=".$fila['IdAlbum']."'>".$fila['Titulo']."</a></li>";
+		                echo "<p>".$fila['Descripcion']."</p>";
 		            }
 
 		            mysqli_free_result($resultado);
 		            mysqli_close($enlace);
 	            ?>
-            </div>
+			</ul>
 		</section>
 <?php
     require_once("../Plantilla/pie.inc");

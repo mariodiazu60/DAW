@@ -41,16 +41,30 @@
                 if (!empty($fecha2)) {
                     echo "<p><b>Hasta: ".$fecha2."</b></p>";
                 }
-                if (!empty($pais)) {
-                    if ($pais == 1) {
-                        $pais = "España";
-                    } elseif ($pais == 2) {
-                        $pais = "Francia";
-                    } elseif ($pais == 3) {
-                        $pais = "Alemania";
+
+                $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+                if (!$enlace) {
+                    echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+                    echo '</p>'; 
+                    exit;
+                }             
+
+                if (!empty($pais) && $pais>0) {
+                    $sentencia = "SELECT * from paises WHERE paises.IdPais='$pais'";
+
+                    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                        echo '</p>';
+                        exit; 
                     }
-                    echo "<p><b>País: ".$pais."</b></p>";
+
+                    $fila = mysqli_fetch_assoc($resultado);
+                    echo "<p><b>País: ".$fila['NomPais']."</b></p>";
+                    mysqli_free_result($resultado);
                 }
+
+                mysqli_close($enlace); 
             ?>
             <div>
                 <?php
@@ -62,7 +76,49 @@
                         exit;
                     }
 
-                    $sentencia = "SELECT Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    if (!empty($tit) && empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Titulo='$tit' AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && !empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha >= '$fecha1') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha <= '$fecha2') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && !empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && !empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Fecha BETWEEN '$fecha1' AND '$fecha2') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && !empty($fecha1) && !empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && !empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Fecha >= '$fecha1') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Fecha <= '$fecha2') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && empty($fecha1) && empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && !empty($fecha1) && !empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (empty($tit) && empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY FRegistro DESC";
+                    }
 
                     if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
@@ -74,7 +130,7 @@
                         echo "<article>";
                         echo "<p>".$fila['Titulo']."</p>";
                         echo "<figure>";
-                        echo "<a title='".$fila['Descripcion']."' href='detalle.php?id=1'><img src='../Imagenes/".$fila['Fichero'].".jpg' alt='".$fila['Alternativo']."' width=100% height=100%></a>";
+                        echo "<a title='".$fila['Descripcion']."' href='detalle.php?id=".$fila['IdFoto']."'><img src='../Imagenes/".$fila['Fichero']."' alt='".$fila['Alternativo']."' width=100% height=100%></a>";
                         echo "</figure>";
                         echo "<footer>";
                         echo "<p>".$fila['Fecha']." | ".$fila['NomPais']."</p>";

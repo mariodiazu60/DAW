@@ -8,66 +8,43 @@
 	$usu3 = "usu3"; $contra3 = "contra3";
 	$usu4 = "usu4"; $contra4 = "contra4";
 
-	if ($usuario == $usu1 && $contra == $contra1) {
-			if ($recordar == 'on') {
+	$enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
-					if(isset($_COOKIE['usuario_recordado'])){
-						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
-					}
-					$estilo = "estilo.css";
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
-			}	else{
-					session_start();
-					$estilo = "estilo.css";
-					$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
+	if (!$enlace) {
+	   	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+   		echo '</p>'; 
+   		exit;
+	}
+
+	$sentencia = "SELECT NomUsuario, Clave, Fichero from usuarios, estilos WHERE (NomUsuario='$usuario' AND Clave='$contra') AND Estilo=IdEstilo";
+
+	if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+	    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+		echo '</p>';
+	    exit; 
+	}
+
+	if (mysqli_num_rows($resultado)>0) {
+		$fila = mysqli_fetch_assoc($resultado);
+		if ($recordar == 'on') {
+			if(isset($_COOKIE['usuario_recordado'])){
+				setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 			}
-			header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
-			exit;
-
-	} elseif ($usuario == $usu2 && $contra == $contra2) {
-				if ($recordar == 'on') {
-					if(isset($_COOKIE['usuario_recordado'])){
-						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
-					}
-					$estilo = "estilo_accesible.css";
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
-				} else{
-						session_start();
-						$estilo = "estilo_accesible.css";
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
-				}
-				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
-				exit;
-	} elseif ($usuario == $usu3 && $contra == $contra3) {
-				if ($recordar == 'on') {
-					if(isset($_COOKIE['usuario_recordado'])){
-						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
-					}
-					$estilo = "estilo_clasico.css";
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
-				} else{
-						session_start();
-						$estilo = "estilo_clasico.css";
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
-				}
-				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
-				exit;
-	} elseif ($usuario == $usu4 && $contra == $contra4) {
-				if ($recordar == 'on') {
-					if(isset($_COOKIE['usuario_recordado'])){
-						setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
-					}
-					$estilo = "estilo_accesible.css";
-					setcookie("usuario_recordado", $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo, time() + 90 * 24 * 60 * 60);
-				} else{
-						session_start();
-						$estilo = "estilo_accesible.css";
-						$_SESSION['usuario_sesion'] = $usuario . ' ' . $contra . ' ' . $fechayhora . ' ' . $estilo;
-				}
-				header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
-				exit;
+			setcookie("usuario_recordado", $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'], time() + 90 * 24 * 60 * 60);
 		} else {
-			header("Location: http://localhost/DAW/PHP/error_login.php");
-			exit;
+			session_start();
+			$estilo = "estilo.css";
+			$_SESSION['usuario_sesion'] = $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'];
 		}
+		mysqli_free_result($resultado);
+		mysqli_close($enlace);
+		header("Location: http://localhost/DAW/PHP/menu_user_logeado.php");
+	} else {
+		mysqli_free_result($resultado);
+		mysqli_close($enlace);
+		header("Location: http://localhost/DAW/PHP/error_login.php");
+	}
+
+	mysqli_free_result($resultado);
+	mysqli_close($enlace);
 ?>

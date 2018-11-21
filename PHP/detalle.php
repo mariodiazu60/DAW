@@ -28,25 +28,39 @@
 
 			<article>
 				<figure>
-					<img src="../Imagenes/camaleon2.jpg" alt="Imagen temporal" width="250" height="250">
-				</figure>
-				<ul>
 					<?php
 						$id = $_GET["id"];
 
-						if (($id%2)==0) {
-							echo "<li>Usuario: Pepito Pérez</li>";
-							echo "<li>Título: Camaleón</li>";
-							echo "<li>Álbum: Animales</li>";
-							echo "<li>Fecha: <time datetime=\"2018-09-24\">24/09/2018</time></li>";
-							echo "<li>País: España</li>";
-						} else {
-							echo "<li>Usuario: Manolo Lama</li>";
-							echo "<li>Título: Lagarto cabreado</li>";
-							echo "<li>Álbum: Reptiles</li>";
-							echo "<li>Fecha: <time datetime=\"2018-10-21\">21/10/2018</time></li>";
-							echo "<li>País: Francia</li>";
+						$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+
+					    if (!$enlace) {
+					    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
+	   						echo '</p>'; 
+	   						exit;
+					    }
+
+					    $sentencia = "SELECT IdFoto, fotos.Titulo as FTitulo, fotos.Descripcion as FDescripcion, Fecha, NomPais, Fichero, Alternativo, albumes.Titulo as ATitulo, NomUsuario from fotos, paises, albumes, usuarios WHERE fotos.IdFoto='$id' AND fotos.Pais=paises.IdPais AND fotos.Album=albumes.IdAlbum AND albumes.Usuario=usuarios.IdUsuario";
+
+					    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
+						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+						   echo '</p>';
+						   exit; 
 						}
+
+						$fila = mysqli_fetch_assoc($resultado);
+						echo "<img title='".$fila['FDescripcion']."' src='../Imagenes/".$fila['Fichero']."' alt='".$fila['Alternativo']."' width=100% height=100%>";
+					?>
+				</figure>
+				<ul>
+					<?php
+						echo "<li>Usuario: ".$fila['NomUsuario']."</li>";
+						echo "<li>Título: ".$fila['FTitulo']."</li>";
+						echo "<li>Álbum: ".$fila['ATitulo']."</li>";
+						echo "<li>Fecha: <time>".$fila['Fecha']."</time></li>";
+						echo "<li>País: ".$fila['NomPais']."</li>";
+
+						mysqli_free_result($resultado);
+			            mysqli_close($enlace);
 					?>
 				</ul>
 			</article>
