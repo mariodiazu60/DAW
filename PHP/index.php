@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     include 'pre_cabecera.php';
 	$title = "Inicio";
     //include 'selector_css.php';
