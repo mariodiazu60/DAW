@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include 'pre_cabecera.php';
     $title = "Solicitud de álbum";
     require_once("../Plantilla/cabecera.inc");

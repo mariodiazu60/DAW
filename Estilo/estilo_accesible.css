@@ -298,6 +298,21 @@ body>section{
 				padding: 1em;
 			}
 
+/*RES BUSQUEDA*/
+.titulo_filtros_busq{
+	text-align: center;
+	margin: 1em;
+}
+
+.filtros_busq{
+	text-align: center;
+}
+.filtros_busq>p{
+	display: inline;
+	margin: 1em;
+}
+/*RES BUSQUEDA*/
+
 /*PIE DE PAGINA*/
 body>footer{
 	background-color: black;

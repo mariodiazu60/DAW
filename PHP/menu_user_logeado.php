@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     include 'pre_cabecera.php';
 	$title = "Menú de usuario";
     require_once("../Plantilla/cabecera.inc");

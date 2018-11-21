@@ -105,9 +105,12 @@
 				echo "<input type='text' name='ciud' id='ciud'>";
 				
 				echo "<label for='foto'> Foto de perfil: </label>";
+				echo "<br>";
+				echo "<br>";
 				echo "<figure>";
-		        echo "<img src='../Imagenes/".$fila['Foto']."' width=100% height=100%>";
+		        echo "<img src='../Imagenes/".$fila['Foto']."' width=50% height=50%>";
 		        echo "</figure>";
+		        echo "<br>";
 				echo "<input id='foto' class='puntero_mano' name='foto' type='file'>";
 						
 				echo "<input type='submit' class='puntero_mano' value='Enviar' name='Enviar'>";

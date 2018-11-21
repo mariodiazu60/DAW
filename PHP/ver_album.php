@@ -67,14 +67,21 @@
                 exit; 
             }
 
-            echo "<p><b>Pais/es: </b></p>";
-            echo "<ul>";
+            $cantidad = mysqli_num_rows($resultado);
+            $i = 0;
+
+            echo "<p><b>Pais/es: </b>";
 
             while ($fila = mysqli_fetch_assoc($resultado)) {
-                echo "<li><b>".$fila['NomPais']."</b></li>";
+                $i++;
+                if ($i<$cantidad) {
+                    echo $fila['NomPais'].", ";
+                } else {
+                    echo $fila['NomPais'];
+                }
             }
 
-            echo "</ul>";
+            echo "</p>";
 
             mysqli_free_result($resultado);
             mysqli_close($enlace); 
