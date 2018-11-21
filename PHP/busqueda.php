@@ -34,6 +34,7 @@
 
 				<label for="pais"> Pa&iacute;s:</label>
                 <select name="pais" id="pais">
+                	<option value="0">Elegir</option>
                 	<?php
 						$enlace = @mysqli_connect("localhost", "root", "", "pibd");
 

@@ -30,16 +30,18 @@
 					echo "<h3> ¡Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3]."! </h3>";
 				} else{
 					$valores = explode(" ", $_SESSION['usuario_sesion']);
-					 echo "<h3> ¡Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3]."! </h3>";
+					echo "<h3> ¡Hola ".$valores[0].", su última visita fue el ".$valores[2]." a las ".$valores[3]."! </h3>";
 				}	
 			?>
 
 			<h2>Men&uacute; de cuenta:</h2>
 			<ul>
-				<li><a href="">Modificar mis datos</a></li>
-				<li><a href="">Mis &aacute;lbumes</a></li>
+				<li><a href="datos.php">Modificar mis datos</a></li>
+				<li><a href="albumes.php">Mis &aacute;lbumes</a></li>
 				<li><a href="crear_album.php">Crear &aacute;lbum</a></li>
+				<li><a href="foto_album.php">Añadir un foto a un álbum</a></li>
 				<li><a href="solic_album.php">Solicitar &aacute;lbum</a></li>
+				<li><a href="configurar.php">Cambiar estilo de la página</a></li>
 				<li><a href="">Darme de baja</a></li>
 				<li><a href="control_salida.php">Cerrar sesión</a></li>
 			</ul>

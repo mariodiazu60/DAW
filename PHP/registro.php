@@ -74,12 +74,7 @@
 				</select>
 				
 				<label for="ciud"> Ciudad:</label>
-				<select name="ciud" id="ciud">
-					<option value="0">Elegir</option>
-					<option value="1">Álava</option>
-					<option value="2">Albacete</option>
-					<option value="3">Alicante</option>
-				</select>
+				<input type="text" name="ciud" id="ciud">
 				
 				<label for="foto"> Foto de perfil:</label>
 				<input id="foto" class="puntero_mano" name="foto" type="file">
