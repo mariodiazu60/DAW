@@ -22,11 +22,16 @@
 
 		<section class="formularios">
 			<h2>Inicio de sesi&oacute;n:</h2>
-			<p>
 			<?php
+				if ((isset($_SESSION['display_page2'])) && $_SESSION[ 'display_page2' ] === TRUE )  {
+					echo "<h4>Error al iniciar sesión</h4>"; 
+					echo "<br>";
+					echo "<h5>Los datos introducidos no son válidos</h5>";
+					echo "<br>";
+				}
+
 			    require_once("../Plantilla/login.inc");
 			?>
-			</p>
 		</section>
 <?php
     require_once("../Plantilla/pie.inc");

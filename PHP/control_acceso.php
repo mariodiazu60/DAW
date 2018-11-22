@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$usuario = $_POST['usu'];
 	$contra = $_POST['contra'];
 	$recordar = $_POST['recordar'];
@@ -32,7 +33,6 @@
 			}
 			setcookie("usuario_recordado", $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'], time() + 90 * 24 * 60 * 60);
 		} else {
-			session_start();
 			$estilo = "estilo.css";
 			$_SESSION['usuario_sesion'] = $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'];
 		}
@@ -42,7 +42,8 @@
 	} else {
 		mysqli_free_result($resultado);
 		mysqli_close($enlace);
-		header("Location: http://localhost/DAW/PHP/error_login.php");
+		$_SESSION[ 'display_page2' ] = TRUE;
+		header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
 	}
 
 	mysqli_free_result($resultado);
