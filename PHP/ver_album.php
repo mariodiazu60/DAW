@@ -1,5 +1,7 @@
 <?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+    $_SESSION[ 'display_page1' ] = FALSE;
     $title = "Resultado búsqueda";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
@@ -23,20 +25,21 @@
 		<?php
 			$id = $_GET["id"];
 
-			$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+			require_once("../Plantilla/bbdd.inc");
 
             if (!$enlace) {
-            	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                echo '</p>'; 
+            	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                echo '</p>';
                 exit;
             }
 
+            mysqli_set_charset($enlace, "utf8");
             $sentencia = "SELECT albumes.Titulo as ATitulo, albumes.Descripcion as ADescripcion, MAX(Fecha) as MaxFecha, MIN(Fecha) as MinFecha from albumes, fotos WHERE IdAlbum='$id' AND IdAlbum=Album";
 
-            if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+            if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                 echo '</p>';
-                exit; 
+                exit;
             }
 
 			$fila = mysqli_fetch_assoc($resultado);
@@ -54,17 +57,18 @@
             $enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
             if (!$enlace) {
-                echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                echo '</p>'; 
-                exit;
-            }             
-
-            $sentencia = "SELECT NomPais from paises, albumes, fotos WHERE IdAlbum='$id' AND IdAlbum=Album AND paises.IdPais=Pais";
-
-            if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
                 echo '</p>';
-                exit; 
+                exit;
+            }
+
+            mysqli_set_charset($enlace, "utf8");
+            $sentencia = "SELECT DISTINCT NomPais from paises, albumes, fotos WHERE IdAlbum='$id' AND IdAlbum=Album AND paises.IdPais=Pais";
+
+            if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+                echo '</p>';
+                exit;
             }
 
             $cantidad = mysqli_num_rows($resultado);
@@ -84,24 +88,24 @@
             echo "</p>";
 
             mysqli_free_result($resultado);
-            mysqli_close($enlace); 
+            mysqli_close($enlace);
         ?>
             <div>
                 <?php
                     $enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
                     if (!$enlace) {
-                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                        echo '</p>'; 
+                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                        echo '</p>';
                         exit;
                     }
-
+                    mysqli_set_charset($enlace, "utf8");
                     $sentencia = "SELECT IdFoto, fotos.Titulo as ATitulo, fotos.Descripcion as ADescripcion, Fichero, Alternativo from fotos, albumes WHERE IdAlbum='$id' AND IdAlbum=Album";
 
-                    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                       echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                       echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                        echo '</p>';
-                       exit; 
+                       exit;
                     }
 
                     while ($fila = mysqli_fetch_assoc($resultado)) {

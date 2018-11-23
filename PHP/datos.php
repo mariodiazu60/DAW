@@ -1,5 +1,7 @@
 <?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+	$_SESSION[ 'display_page1' ] = FALSE;
 	$title = "Registro";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
@@ -26,20 +28,21 @@
 				$valores = explode(" ", $_SESSION['usuario_sesion']);
 			}
 
-			$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+			require_once("../Plantilla/bbdd.inc");
 
 			if (!$enlace) {
-			  	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-	   			echo '</p>'; 
+			  	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+	   			echo '</p>';
 	   			exit;
 			}
 
+      mysqli_set_charset($enlace, "utf8");
 			$sentencia = "SELECT NomUsuario, Email, Sexo, FNacimiento, Ciudad, NomPais, Foto from usuarios, paises WHERE NomUsuario='$valores[0]' AND Pais=IdPais";
 
-			if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+			if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+				echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
 				echo '</p>';
-			    exit; 
+			    exit;
 			}
 
 			$fila = mysqli_fetch_assoc($resultado);
@@ -50,15 +53,15 @@
 
 				echo "<label for='usu'> Nombre de usuario: ".$fila['NomUsuario']."</label>";
 				echo "<input type='text' id='usu' name='usu'>";
-					
+
 				echo "<label for='contra'> Contraseña: </label>";
 				echo "<input type='password' id='contra' name='contra' required>";
-				
+
 				echo "<label for='contra1'> Repetir contraseña: </label>";
 				echo "<input type='password' id='contra1' name='contra1' required>";
-				
+
 			    echo "<label for='correo'> Correo electr&oacute;nico: ".$fila['Email']."</label>";
-			    echo "<input type='email' id='correo' name='correo'>";		
+			    echo "<input type='email' id='correo' name='correo'>";
 				if ($fila['Sexo']==0) {
 					 $sexo = 'Hombre';
 				} else {
@@ -69,27 +72,28 @@
 					echo '<option value="0">Hombre</option>';
 					echo '<option value="1">Mujer</option>';
 				echo "</select>";
-				
+
 				echo "<label for='fecha'> Fecha de nacimiento: ".$fila['FNacimiento']."</label>";
 				echo "<input id='fecha' name='fecha' type='date'>";
-				
+
 				echo "<label for='pais'> Pa&iacute;s de residencia: ".$fila['NomPais']."</label>";
 				echo "<select name='pais' id='pais'>";
 
-					$link = @mysqli_connect("localhost", "root", "", "pibd");
+					require_once("../Plantilla/bbdd2.inc");
 
 				    if (!$link) {
-				    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-	   					echo '</p>'; 
+				    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+	   					echo '</p>';
 	   					exit;
 				    }
 
+            mysqli_set_charset($link, "utf8");
 				    $sent = "SELECT * from paises";
 
-				    if(!($res = @mysqli_query($link, $sent))) { 
-					   echo "<p>Error al ejecutar la sentencia <b>$sent</b>: " . mysqli_error($link); 
+				    if(!($res = @mysqli_query($link, $sent))) {
+					   echo "<p>Error al ejecutar la sentencia <b>$sent</b>: " . mysqli_error($link);
 					   echo '</p>';
-					   exit; 
+					   exit;
 					}
 
 					while ($row = mysqli_fetch_assoc($res)) {
@@ -100,10 +104,10 @@
 		           	mysqli_close($link);
 
 				echo "</select>";
-				
+
 				echo "<label for='ciud'> Ciudad: ".$fila['Ciudad']."</label>";
 				echo "<input type='text' name='ciud' id='ciud'>";
-				
+
 				echo "<label for='foto'> Foto de perfil: </label>";
 				echo "<br>";
 				echo "<br>";
@@ -112,13 +116,13 @@
 		        echo "</figure>";
 		        echo "<br>";
 				echo "<input id='foto' class='puntero_mano' name='foto' type='file'>";
-						
+
 				echo "<input type='submit' class='puntero_mano' value='Enviar' name='Enviar'>";
 
 				mysqli_free_result($resultado);
 				mysqli_close($enlace);
 			?>
-			</form>		
+			</form>
 		</section>
 <?php
     require_once("../Plantilla/pie.inc");

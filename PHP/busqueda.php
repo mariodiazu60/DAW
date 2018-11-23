@@ -1,5 +1,7 @@
 ﻿<?php
 	include 'pre_cabecera.php';
+	$_SESSION[ 'display_page2' ] = FALSE;
+	$_SESSION[ 'display_page1' ] = FALSE;
 	$title = "Búsqueda";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
@@ -36,20 +38,21 @@
                 <select name="pais" id="pais">
                 	<option value="0">Elegir</option>
                 	<?php
-						$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+						require_once("../Plantilla/bbdd.inc");
 
 					    if (!$enlace) {
-					    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-	   						echo '</p>'; 
+					    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+	   						echo '</p>';
 	   						exit;
 					    }
 
+							mysqli_set_charset($enlace, "utf8");
 					    $sentencia = "SELECT * from paises";
 
-					    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+					    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
 						   echo '</p>';
-						   exit; 
+						   exit;
 						}
 
 						while ($fila = mysqli_fetch_assoc($resultado)) {

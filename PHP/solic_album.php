@@ -1,10 +1,13 @@
 ﻿<?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+    $_SESSION[ 'display_page1' ] = FALSE;
     $title = "Solicitud de álbum";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
     if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
-        header("Location: http://localhost/DAW/PHP/index.php");
+        $_SESSION[ 'display_page1' ] = TRUE;
+        header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
     }
 ?>
 		<nav>
@@ -80,20 +83,21 @@
                 <label for="pais"> Pa&iacute;s(*):</label>
                 <select name="pais" id="pais">
                     <?php
-                        $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+                        require_once("../Plantilla/bbdd.inc");
 
                         if (!$enlace) {
-                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                            echo '</p>'; 
+                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                            echo '</p>';
                             exit;
                         }
 
+                        mysqli_set_charset($enlace, "utf8");
                         $sentencia = "SELECT * from paises";
 
-                        if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                        if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                            echo '</p>';
-                           exit; 
+                           exit;
                         }
 
                         while ($fila = mysqli_fetch_assoc($resultado)) {
@@ -143,22 +147,23 @@
                             $valores = explode(" ", $_COOKIE['usuario_recordado']);
                         } else{
                             $valores = explode(" ", $_SESSION['usuario_sesion']);
-                        }   
+                        }
 
                         $enlace = @mysqli_connect("localhost", "root", "", "pibd");
 
                         if (!$enlace) {
-                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                            echo '</p>'; 
+                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                            echo '</p>';
                             exit;
                         }
 
+                        mysqli_set_charset($enlace, "utf8");
                         $sentencia = "SELECT IdAlbum, Titulo from usuarios, albumes where NomUsuario='$valores[0]' AND IdUsuario=Usuario";
 
-                        if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                        if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                            echo '</p>';
-                           exit; 
+                           exit;
                         }
 
                         while ($fila = mysqli_fetch_assoc($resultado)) {

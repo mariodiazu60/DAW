@@ -1,5 +1,7 @@
 ﻿<?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+    $_SESSION[ 'display_page1' ] = FALSE;
     $title = "Resultado búsqueda";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
@@ -42,21 +44,22 @@
                     echo "<p><b>Hasta: ".$fecha2."</b></p>";
                 }
 
-                $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+                require_once("../Plantilla/bbdd.inc");
 
                 if (!$enlace) {
-                    echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                    echo '</p>'; 
+                    echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                    echo '</p>';
                     exit;
-                }             
+                }
 
                 if (!empty($pais) && $pais>0) {
+                    mysqli_set_charset($enlace, "utf8");
                     $sentencia = "SELECT * from paises WHERE paises.IdPais='$pais'";
 
-                    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                        echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                         echo '</p>';
-                        exit; 
+                        exit;
                     }
 
                     $fila = mysqli_fetch_assoc($resultado);
@@ -64,32 +67,34 @@
                     mysqli_free_result($resultado);
                 }
 
-                mysqli_close($enlace); 
+                mysqli_close($enlace);
             ?>
             <div>
                 <?php
-                    $enlace = @mysqli_connect("localhost", "root", "", "pibd");
+                    require_once("../Plantilla/bbdd.inc");
 
                     if (!$enlace) {
-                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-                        echo '</p>'; 
+                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+                        echo '</p>';
                         exit;
                     }
 
+                    mysqli_set_charset($enlace, "utf8");
+
                     if (!empty($tit) && empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Titulo='$tit' AND fotos.Pais=paises.IdPais";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Titulo LIKE '%$tit%' AND fotos.Pais=paises.IdPais";
                     }
 
                     if (!empty($tit) && !empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha >= '$fecha1') AND fotos.Pais=paises.IdPais";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha >= '$fecha1') AND fotos.Pais=paises.IdPais";
                     }
 
                     if (!empty($tit) && empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha <= '$fecha2') AND fotos.Pais=paises.IdPais";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha <= '$fecha2') AND fotos.Pais=paises.IdPais";
                     }
 
                     if (!empty($tit) && !empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2') AND fotos.Pais=paises.IdPais";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2') AND fotos.Pais=paises.IdPais";
                     }
 
                     if (empty($tit) && !empty($fecha1) && !empty($fecha2) && (empty($pais) || $pais<=0)) {
@@ -113,17 +118,29 @@
                     }
 
                     if (!empty($tit) && !empty($fecha1) && !empty($fecha2) && (!empty($pais) && $pais>0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo='$tit' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha BETWEEN '$fecha1' AND '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && empty($fecha1) && empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && !empty($fecha1) && empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha >= '$fecha1' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
+                    }
+
+                    if (!empty($tit) && empty($fecha1) && !empty($fecha2) && (!empty($pais) && $pais>0)) {
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE (fotos.Titulo LIKE '%$tit%' AND fotos.Fecha <= '$fecha2' AND fotos.Pais='$pais') AND fotos.Pais=paises.IdPais";
                     }
 
                     if (empty($tit) && empty($fecha1) && empty($fecha2) && (empty($pais) || $pais<=0)) {
-                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY FRegistro DESC";
+                        $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY FRegistro";
                     }
 
-                    if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-                       echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+                    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+                       echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
                        echo '</p>';
-                       exit; 
+                       exit;
                     }
 
                     while ($fila = mysqli_fetch_assoc($resultado)) {

@@ -1,5 +1,7 @@
 <?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+	$_SESSION[ 'display_page1' ] = FALSE;
 	$title = "Iniciar sesión";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
@@ -24,9 +26,14 @@
 			<h2>Inicio de sesi&oacute;n:</h2>
 			<?php
 				if ((isset($_SESSION['display_page2'])) && $_SESSION[ 'display_page2' ] === TRUE )  {
-					echo "<h4>Error al iniciar sesión</h4>"; 
+					echo "<h4>Error al iniciar sesión</h4>";
 					echo "<br>";
 					echo "<h5>Los datos introducidos no son válidos</h5>";
+					echo "<br>";
+				}
+
+				if ((isset($_SESSION['display_page1'])) && $_SESSION[ 'display_page1' ] === TRUE )  {
+					echo "<h4>Registrate para acceder</h4>";
 					echo "<br>";
 				}
 

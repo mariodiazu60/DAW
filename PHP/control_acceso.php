@@ -9,23 +9,23 @@
 	$usu3 = "usu3"; $contra3 = "contra3";
 	$usu4 = "usu4"; $contra4 = "contra4";
 
-	$enlace = @mysqli_connect("localhost", "root", "", "pibd");
+	require_once("../Plantilla/bbdd.inc");
 
 	if (!$enlace) {
-	   	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error(); 
-   		echo '</p>'; 
+	   	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+   		echo '</p>';
    		exit;
 	}
-
+	mysqli_set_charset($enlace, "utf8");
 	$sentencia = "SELECT NomUsuario, Clave, Fichero from usuarios, estilos WHERE (NomUsuario='$usuario' AND Clave='$contra') AND Estilo=IdEstilo";
 
-	if(!($resultado = @mysqli_query($enlace, $sentencia))) { 
-	    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace); 
+	if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+	    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
 		echo '</p>';
-	    exit; 
+	    exit;
 	}
 
-	if (mysqli_num_rows($resultado)>0) {
+	if (mysqli_num_rows($resultado)==1) {
 		$fila = mysqli_fetch_assoc($resultado);
 		if ($recordar == 'on') {
 			if(isset($_COOKIE['usuario_recordado'])){
@@ -43,6 +43,7 @@
 		mysqli_free_result($resultado);
 		mysqli_close($enlace);
 		$_SESSION[ 'display_page2' ] = TRUE;
+		$_SESSION[ 'display_page1' ] = FALSE;
 		header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
 	}
 

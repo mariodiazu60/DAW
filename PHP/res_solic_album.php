@@ -1,5 +1,7 @@
 ﻿<?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+	$_SESSION[ 'display_page1' ] = FALSE;
 	$title = "Resultado solicitud álbum";
     require_once("../Plantilla/../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");

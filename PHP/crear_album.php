@@ -1,10 +1,13 @@
 <?php
     include 'pre_cabecera.php';
+    $_SESSION[ 'display_page2' ] = FALSE;
+    $_SESSION[ 'display_page1' ] = FALSE;
 	$title = "Crear álbum";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 		if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
-			header("Location: http://localhost/DAW/PHP/index.php");
+            $_SESSION[ 'display_page1' ] = TRUE;
+			header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
 		}
 ?>
 		<nav>
