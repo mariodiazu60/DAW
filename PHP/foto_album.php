@@ -2,7 +2,7 @@
     include 'pre_cabecera.php';
     $_SESSION[ 'display_page2' ] = FALSE;
     $_SESSION[ 'display_page1' ] = FALSE;
-	$title = "Crear álbum";
+	$title = "Añadir foto";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 		if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
@@ -28,14 +28,14 @@
 
 		<section class="formularios">
 			<h2>Añade una foto a tu álbum:</h2>
-            <form action="">
+            <form name='registro' action='res_foto_album.php' id='form' method='post'>
                 <label for="nomb"> Título:</label>
                 <input type="text" name="tit" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
 
                 <label for="dedic"> Descripción:</label>
                 <textarea rows="4" id="dedic" name="desc" cols="50" maxlength="4000" required></textarea>
 
-                <label for="fecha"></label>
+                <label for="fecha"> Fecha en la que fue tomada la foto:</label>
                 <input type="date" name="date" id="fecha">
 
                 <label for="pais"> Pa&iacute;s:</label>
@@ -63,12 +63,11 @@
                         }
 
                         mysqli_free_result($resultado);
-                        mysqli_close($enlace);
                     ?>
                 </select>
 
                 <label for="foto"> Foto:</label>
-                <input id="foto" class="puntero_mano" name="foto" type="file">
+                <input id="foto" class="puntero_mano" required name="foto" type="file">
 
                 <label for="alter"> Texto alternativo:</label>
                 <textarea rows="4" id="alter" name="alter" cols="50" minlength="10" maxlength="4000" required></textarea>
@@ -82,15 +81,6 @@
                         $valores = explode(" ", $_SESSION['usuario_sesion']);
                     }
 
-                    $enlace = @mysqli_connect("localhost", "root", "", "pibd");
-
-                    if (!$enlace) {
-                        echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
-                        echo '</p>';
-                        exit;
-                    }
-
-                    mysqli_set_charset($enlace, "utf8");
                     $sentencia = "SELECT IdAlbum, Titulo, Descripcion from usuarios, albumes WHERE NomUsuario='$valores[0]' AND Usuario=IdUsuario";
 
                     if(!($resultado = @mysqli_query($enlace, $sentencia))) {

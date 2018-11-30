@@ -25,7 +25,6 @@
 		<section class="menu_user_logeado">
 			<h2>Resultado del resgistro:</h2>
 			
-			<ul>
 				<?php
 					$usu = $_POST["usu"];
 					$contra = $_POST["contra"];
@@ -35,52 +34,79 @@
 					$fnac = $_POST["fecha"];
 					$pais = $_POST["pais"];
 					$city = $_POST["ciud"];
+					$foto = $_POST["foto"];
+					
+					echo "<ul>";
 
-					if ($contra == $contra1) {
-						echo "<li>Nombre de usuario: ".$usu."</li>";
-						echo "<li>Contraseña: ".$contra."</li>";
-						echo "<li>Correo electrónico: ".$correo."</li>";
+					require_once("../Plantilla/regex.inc");
 
-						if (!empty($sexo)) {
-							if ($sexo == 1) {
-								$sexo = "Mujer";
-							} elseif ($sexo == 2) {
-								$sexo = "Hombre";
-							} elseif ($sexo == 3) {
-								$sexo = "Otro";
-							} elseif ($sexo == 4) {
-								$sexo = "Prefiero no decirlo";
-							}
-							echo "<li>Sexo: ".$sexo."</li>";
-						}
-						if (!empty($fnac)) {
-							echo "<li>Fecha de nacimiento: ".$fnac."</li>";
-						}
-						if (!empty($pais)) {
-							if ($pais == 1) {
-								$pais = "España";
-							} elseif ($pais == 2) {
-								$pais = "Francia";
-							} elseif ($pais == 3) {
-								$pais = "Alemania";
-							}
-							echo "<li>País de residencia: ".$pais."</li>";
-						}
-						if (!empty($city)) {
-							if ($city == 1) {
-								$city = "Álava";
-							} elseif ($city == 2) {
-								$city = "Albacete";
-							} elseif ($city == 3) {
-								$city = "Alicante";
-							}
-							echo "<li>Ciudad: ".$city."</li>";
-						}
+					if ($contra==$contra1){
+						if (preg_match('/'.$regexpusu.'/', $usu)){
+							if (preg_match('/'.$regexcontra.'/', $contra)) {
+								if (preg_match('/'.$regexemail.'/', $correo)) {
+									if (preg_match('/'.$regexfecha.'/', $fnac)) {
+										require_once("../Plantilla/bbdd.inc");
+
+									    if (!$enlace) {
+									    	echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+					   						echo '</p>';
+					   						exit;
+									    }
+
+				              			mysqli_set_charset($enlace, "utf8");
+				              			$sentencia = "INSERT INTO usuarios (IdUsuario, NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais) VALUES (null, '$usu', '$contra', '$correo', $sexo, '$fnac', '$city', $pais)";
+
+				              			if(!mysqli_query($enlace, $sentencia)) 
+				   							die("Error: no se pudo realizar la inserción");
+
+									    $sentencia = "SELECT * FROM usuarios, paises WHERE NomUsuario='$usu' AND IdPais=Pais";
+
+									    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+										   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+										   echo '</p>';
+										   exit;
+										}
+
+										$fila = mysqli_fetch_assoc($resultado);
+
+										echo "<li>Nombre de usuario: ".$usu."</li>";
+										echo "<li>Contraseña: ".$contra."</li>";
+										echo "<li>Correo electrónico: ".$correo."</li>";
+
+										if ($fila['Sexo'] == 1) {
+											$sexo = "Mujer";
+										} else {
+											$sexo = "Hombre";
+										}
+										echo "<li>Sexo: ".$sexo."</li>";
+
+										echo "<li>Fecha de nacimiento: ".$fila['FNacimiento']."</li>";
+										echo "<li>Pais de residencia: ".$fila['NomPais']."</li>";
+
+										if (!empty($fila['Ciudad'])) {
+											echo "<li>Ciudad: ".$fila['Ciudad']."</li>";
+										}
+
+										mysqli_free_result($resultado);
+						            	mysqli_close($enlace);
+						            } else {
+						            	echo "<h4>La fecha introducida no es válida</h4>";
+						            }
+						        } else {
+						        	echo "<h4>El correo electrónico introducido no es válido</h4>";
+						        }
+						    } else {
+						    	echo "<h4>La contraseña introducida no es válida</h4>";
+						    }
+						} else {
+							echo "<h4>El nombre de usuario introducido no es válido</h4>";
+						}	
 					} else {
-						echo "<p>Las contraseñas introducidas no coinciden, por favor vuelve a intentarlo</p>";
+						echo "<h4>Las contraseñas introducidas no coinciden</h4>";
 					}
+			
+					echo "</ul>";
 				?>
-			</ul>
 		</section>
 <?php
     require_once("../Plantilla/pie.inc");

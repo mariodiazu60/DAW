@@ -232,6 +232,15 @@ body>section{
 	.menu_user_logeado>h3{
 		align-self: center;
 	}
+	.menu_user_logeado>h4{
+		align-self: center;
+	}
+		.menu_user_logeado>h4>a{
+			color: black;
+		}
+		.menu_user_logeado>h4>a:hover{
+			background-color: white;
+		}
 	.menu_user_logeado>p{
 		padding-top: .5em;
 		padding-left: 5%;

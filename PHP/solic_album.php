@@ -80,53 +80,8 @@
                 <label for="correo"> Correo del destinatario(*):</label>
                 <input type="email" name="correo" id="correo" maxlength="200" required />
 
-                <label for="pais"> Pa&iacute;s(*):</label>
-                <select name="pais" id="pais">
-                    <?php
-                        require_once("../Plantilla/bbdd.inc");
-
-                        if (!$enlace) {
-                            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
-                            echo '</p>';
-                            exit;
-                        }
-
-                        mysqli_set_charset($enlace, "utf8");
-                        $sentencia = "SELECT * from paises";
-
-                        if(!($resultado = @mysqli_query($enlace, $sentencia))) {
-                           echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
-                           echo '</p>';
-                           exit;
-                        }
-
-                        while ($fila = mysqli_fetch_assoc($resultado)) {
-                            echo "<option value='".$fila['IdPais']."'>".$fila['NomPais']."</option>";
-                        }
-
-                        mysqli_free_result($resultado);
-                        mysqli_close($enlace);
-                    ?>
-                </select>
-
-                <label for="prov"> Provincia/regi&oacute;n(*):</label>
-                <select name="prov" id="prov">
-                    <option value="0">Álava</option>
-                    <option value="1">Albacete</option>
-                    <option value="2">Alicante</option>
-                </select>
-                <label for="ciud"> Ciudad(*):</label>
-                <select name="ciud" id="ciud">
-                    <option value="0">Torrevieja</option>
-                    <option value="1">Elche</option>
-                    <option value="2">Alicante</option>
-                </select>
-
-                <label for="cod"> C&oacute;digo postal(*):</label>
-                <input type="text" name="cod" id="cod" maxlength="10" required>
-
                 <label for="direc"> Direcci&oacute;n postal(*):</label>
-                <input type="text" name="direc" id="direc" placeholder="Calle, portal y piso" maxlength="200" required>
+                <input type="text" name="direc" id="direc" placeholder="País, provincia, ciudad, calle, portal, piso y código postal" maxlength="500" required>
 
                 <label for="colo"> Color de portada:</label>
                 <input type="color" name="colo" id="colo">

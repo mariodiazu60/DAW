@@ -2,7 +2,7 @@
     include 'pre_cabecera.php';
     $_SESSION[ 'display_page2' ] = FALSE;
 	$_SESSION[ 'display_page1' ] = FALSE;
-	$title = "Menú de usuario";
+	$title = "Selección del estilo";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 	if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
@@ -38,8 +38,8 @@
    						exit;
 				    }
 
-            mysqli_set_charset($enlace, "utf8");
-				    $sentencia = "SELECT Nombre from estilos";
+            		mysqli_set_charset($enlace, "utf8");
+				    $sentencia = "SELECT * from estilos";
 
 				    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
 					   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
@@ -48,7 +48,7 @@
 					}
 
 					while ($fila = mysqli_fetch_assoc($resultado)) {
-		                echo "<li><a href=''>".$fila['Nombre']."</a></li>";
+		                echo "<li><a href='res_res_configurar.php?id=".$fila['IdEstilo']."'>".$fila['Nombre']."</a></li>";
 		            }
 
 		            mysqli_free_result($resultado);

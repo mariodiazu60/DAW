@@ -1,68 +1,53 @@
 <?php
-	$estilo = "estilo.css";
-    $usu = ""; $contra = "";
-    $usu1 = "usu1"; $contra1 = "contra1";
-    $usu2 = "usu2"; $contra2 = "contra2";
-    $usu3 = "usu3"; $contra3 = "contra3";
-    $usu4 = "usu4"; $contra4 = "contra4";
+    $estilo = "estilo.css";
 	session_start();
     if (isset($_COOKIE['usuario_recordado'])==true) {
         $valores = explode(" ", $_COOKIE['usuario_recordado']);
-        $usu = $valores[0];
-        $contra = $valores[1];
-        if ($usu != $usu1 && $contra != $contra1) {
-            if ($usu != $usu2 && $contra != $contra2) {
-                if ($usu != $usu3 && $contra != $contra3) {
-                    if ($usu != $usu4 && $contra != $contra4) {
-                        header("Location: http://localhost/DAW/PHP/control_salida.php");
-                    } else {
-                        $estilo =$valores[4];
-                        $fechayhora = date("Y-m-d H:i");
-                        setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora.' '.$valores[4], time() + 90 * 24 * 60 * 60);
-                    }
-                } else {
-                    $estilo =$valores[4];
-                    $fechayhora = date("Y-m-d H:i");
-                    setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora.' '.$valores[4], time() + 90 * 24 * 60 * 60);
-                }
-            } else {
-                $estilo =$valores[4];
-                $fechayhora = date("Y-m-d H:i");
-                setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora.' '.$valores[4], time() + 90 * 24 * 60 * 60);
-            }
-        } else {
-            $estilo =$valores[4];
-            $fechayhora = date("Y-m-d H:i");
-            setcookie("usuario_recordado", $valores[0].' '.$valores[1].' '.$fechayhora.' '.$valores[4], time() + 90 * 24 * 60 * 60);
+        $usu = $valores[5];
+        require_once("../Plantilla/bbdd.inc");
+
+        if (!$enlace) {
+            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+            echo '</p>';
+            exit;
         }
+        mysqli_set_charset($enlace, "utf8");
+        $sentencia = "SELECT * from usuarios, estilos WHERE IdUsuario='$usu' AND Estilo=IdEstilo";
+
+        if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+            echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+            echo '</p>';
+            exit;
+        }
+        $fila = mysqli_fetch_assoc($resultado);
+        $fechayhora = date("Y-m-d H:i");
+        $usu = $fila['NomUsuario'];
+        $contra = $fila['Clave'];
+        $estilo = $fila['Fichero'];
+        setcookie("usuario_recordado", $usu.' '.$contra.' '.$fechayhora.' '.$estilo.' '.$fila['IdUsuario'], time() + 90 * 24 * 60 * 60);
     } elseif (isset($_SESSION['usuario_sesion'])==true) {
     	$valores = explode(" ", $_SESSION['usuario_sesion']);
-        $usu = $valores[0];
-        $contra = $valores[1];
-        if ($usu != $usu1 && $contra != $contra1) {
-            if ($usu != $usu2 && $contra != $contra2) {
-                if ($usu != $usu3 && $contra != $contra3) {
-                    if ($usu != $usu4 && $contra != $contra4) {
-                        header("Location: http://localhost/DAW/PHP/control_salida.php");
-                    } else {
-                        $estilo = $valores[4];
-                        $fechayhora = date("Y-m-d H:i");
-                        $_SESSION['usuario_sesion'] = $valores[0] . ' ' . $valores[1] . ' ' . $fechayhora . ' ' . $valores[4];
-                    }
-                } else {
-                    $estilo = $valores[4];
-                    $fechayhora = date("Y-m-d H:i");
-                    $_SESSION['usuario_sesion'] = $valores[0] . ' ' . $valores[1] . ' ' . $fechayhora . ' ' . $valores[4];
-                }
-            } else {
-                $estilo = $valores[4];
-                $fechayhora = date("Y-m-d H:i");
-                $_SESSION['usuario_sesion'] = $valores[0] . ' ' . $valores[1] . ' ' . $fechayhora . ' ' . $valores[4];
-            }
-        } else {
-            $estilo = $valores[4];
-            $fechayhora = date("Y-m-d H:i");
-            $_SESSION['usuario_sesion'] = $valores[0] . ' ' . $valores[1] . ' ' . $fechayhora . ' ' . $valores[4];
+        $usu = $valores[5];
+        require_once("../Plantilla/bbdd.inc");
+
+        if (!$enlace) {
+            echo '<p>Error al conectar con la base de datos: ' . mysqli_connect_error();
+            echo '</p>';
+            exit;
         }
+        mysqli_set_charset($enlace, "utf8");
+        $sentencia = "SELECT * from usuarios, estilos WHERE IdUsuario='$usu' AND Estilo=IdEstilo";
+
+        if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+            echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+            echo '</p>';
+            exit;
+        }
+        $fila = mysqli_fetch_assoc($resultado);
+        $fechayhora = date("Y-m-d H:i");
+        $usu = $fila['NomUsuario'];
+        $contra = $fila['Clave'];
+        $estilo = $fila['Fichero'];
+        $_SESSION['usuario_sesion'] = $usu.' '.$contra.' '.$fechayhora.' '.$estilo.' '.$fila['IdUsuario'];
     }
 ?>

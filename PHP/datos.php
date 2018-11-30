@@ -36,7 +36,7 @@
 	   			exit;
 			}
 
-      mysqli_set_charset($enlace, "utf8");
+      		mysqli_set_charset($enlace, "utf8");
 			$sentencia = "SELECT NomUsuario, Email, Sexo, FNacimiento, Ciudad, NomPais, Foto from usuarios, paises WHERE NomUsuario='$valores[0]' AND Pais=IdPais";
 
 			if(!($resultado = @mysqli_query($enlace, $sentencia))) {
@@ -49,16 +49,16 @@
 
 			echo "<section class='formularios'>";
 			echo "<h2>Modifica tus datos:</h2>";
-			echo "<form name='registro' action='res_registro.php' id='form' method='post'>";
+			echo "<form name='registro' action='res_datos.php' id='form' method='post'>";
 
 				echo "<label for='usu'> Nombre de usuario: ".$fila['NomUsuario']."</label>";
 				echo "<input type='text' id='usu' name='usu'>";
 
 				echo "<label for='contra'> Contraseña: </label>";
-				echo "<input type='password' id='contra' name='contra' required>";
+				echo "<input type='password' id='contra' name='contra'>";
 
 				echo "<label for='contra1'> Repetir contraseña: </label>";
-				echo "<input type='password' id='contra1' name='contra1' required>";
+				echo "<input type='password' id='contra1' name='contra1'>";
 
 			    echo "<label for='correo'> Correo electr&oacute;nico: ".$fila['Email']."</label>";
 			    echo "<input type='email' id='correo' name='correo'>";
@@ -69,6 +69,7 @@
 				}
 				echo "<label for='sex'> Sexo: ".$sexo."</label>";
 			    echo "<select name='sex' id='sex'>";
+			    	echo "<option value='-1'>-Elegir-</option>";
 					echo '<option value="0">Hombre</option>';
 					echo '<option value="1">Mujer</option>';
 				echo "</select>";
@@ -78,6 +79,7 @@
 
 				echo "<label for='pais'> Pa&iacute;s de residencia: ".$fila['NomPais']."</label>";
 				echo "<select name='pais' id='pais'>";
+					echo "<option value='0'>-Elegir-</option>";
 
 					require_once("../Plantilla/bbdd2.inc");
 
@@ -87,7 +89,7 @@
 	   					exit;
 				    }
 
-            mysqli_set_charset($link, "utf8");
+            		mysqli_set_charset($link, "utf8");
 				    $sent = "SELECT * from paises";
 
 				    if(!($res = @mysqli_query($link, $sent))) {
@@ -116,6 +118,9 @@
 		        echo "</figure>";
 		        echo "<br>";
 				echo "<input id='foto' class='puntero_mano' name='foto' type='file'>";
+
+				echo "<label for='contra2'> Introduce tu contraseña actual para confirmar los cambios: </label>";
+				echo "<input type='password' id='contra2' name='contra2' required>";
 
 				echo "<input type='submit' class='puntero_mano' value='Enviar' name='Enviar'>";
 

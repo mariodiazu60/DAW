@@ -45,7 +45,7 @@
 				<li><a href="foto_album.php">Añadir un foto a un álbum</a></li>
 				<li><a href="solic_album.php">Solicitar &aacute;lbum</a></li>
 				<li><a href="configurar.php">Cambiar estilo de la página</a></li>
-				<li><a href="">Darme de baja</a></li>
+				<li><a href="dar_baja.php">Darme de baja</a></li>
 				<li><a href="control_salida.php">Cerrar sesión</a></li>
 			</ul>
 		</section>

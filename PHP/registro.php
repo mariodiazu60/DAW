@@ -45,7 +45,7 @@
 				</select>
 
 				<label for="fecha"> Fecha de nacimiento:</label>
-				<input id="fecha" name="fecha" type="date">
+				<input id="fecha" required name="fecha" type="date">
 
 				<label for="pais"> Pa&iacute;s de residencia:</label>
 				<select name="pais" id="pais">
@@ -58,7 +58,7 @@
 	   						exit;
 					    }
 
-              mysqli_set_charset($enlace, "utf8");
+              			mysqli_set_charset($enlace, "utf8");
 					    $sentencia = "SELECT * from paises";
 
 					    if(!($resultado = @mysqli_query($enlace, $sentencia))) {

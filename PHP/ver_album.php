@@ -2,7 +2,7 @@
     include 'pre_cabecera.php';
     $_SESSION[ 'display_page2' ] = FALSE;
     $_SESSION[ 'display_page1' ] = FALSE;
-    $title = "Resultado búsqueda";
+    $title = "Ver álbum";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 ?>

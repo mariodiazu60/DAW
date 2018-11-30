@@ -28,7 +28,7 @@
 
 		<section class="formularios">
 			<h2>Crea t&uacute; &aacute;lbum:</h2>
-            <form action="">
+            <form name='registro' action='res_crear_album.php' id='form' method='post'>
                 <label for="nomb"> Título:</label>
                 <input type="text" name="tit" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
 

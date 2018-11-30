@@ -4,10 +4,6 @@
 	$contra = $_POST['contra'];
 	$recordar = $_POST['recordar'];
 	$fechayhora = date("Y-m-d H:i");
-	$usu1 = "usu1"; $contra1 = "contra1";
-	$usu2 = "usu2"; $contra2 = "contra2";
-	$usu3 = "usu3"; $contra3 = "contra3";
-	$usu4 = "usu4"; $contra4 = "contra4";
 
 	require_once("../Plantilla/bbdd.inc");
 
@@ -17,7 +13,7 @@
    		exit;
 	}
 	mysqli_set_charset($enlace, "utf8");
-	$sentencia = "SELECT NomUsuario, Clave, Fichero from usuarios, estilos WHERE (NomUsuario='$usuario' AND Clave='$contra') AND Estilo=IdEstilo";
+	$sentencia = "SELECT NomUsuario, Clave, Fichero, IdUsuario from usuarios, estilos WHERE (NomUsuario='$usuario' AND Clave='$contra') AND Estilo=IdEstilo";
 
 	if(!($resultado = @mysqli_query($enlace, $sentencia))) {
 	    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
@@ -31,10 +27,10 @@
 			if(isset($_COOKIE['usuario_recordado'])){
 				setcookie("usuario_recordado", $_COOKIE['usuario_recordado'] + 1, time() - 90 * 24 * 60 * 60);
 			}
-			setcookie("usuario_recordado", $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'], time() + 90 * 24 * 60 * 60);
+			setcookie("usuario_recordado", $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'].' '.$fila['IdUsuario'], time() + 90 * 24 * 60 * 60);
 		} else {
 			$estilo = "estilo.css";
-			$_SESSION['usuario_sesion'] = $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'];
+			$_SESSION['usuario_sesion'] = $usuario.' '.$contra.' '.$fechayhora.' '.$fila['Fichero'].' '.$fila['IdUsuario'];
 		}
 		mysqli_free_result($resultado);
 		mysqli_close($enlace);

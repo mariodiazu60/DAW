@@ -2,7 +2,7 @@
     include 'pre_cabecera.php';
     $_SESSION[ 'display_page2' ] = FALSE;
 	$_SESSION[ 'display_page1' ] = FALSE;
-	$title = "Menú de usuario";
+	$title = "Álbumes";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
 	if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
@@ -44,7 +44,7 @@
    						exit;
 				    }
 
-            mysqli_set_charset($enlace, "utf8");
+            		mysqli_set_charset($enlace, "utf8");
 				    $sentencia = "SELECT IdAlbum, Titulo, Descripcion from usuarios, albumes WHERE NomUsuario='$valores[0]' AND Usuario=IdUsuario";
 
 				    if(!($resultado = @mysqli_query($enlace, $sentencia))) {

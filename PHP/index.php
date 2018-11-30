@@ -34,7 +34,7 @@
    						exit;
 				    }
 
-            mysqli_set_charset($enlace, "utf8");
+            		mysqli_set_charset($enlace, "utf8");
 				    $sentencia = "SELECT IdFoto, Titulo, Descripcion, Fecha, NomPais, Fichero, Alternativo from fotos, paises WHERE fotos.Pais=paises.IdPais ORDER BY FRegistro DESC LIMIT 5";
 
 				    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
