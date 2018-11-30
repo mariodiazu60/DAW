@@ -260,7 +260,8 @@ body>section{
 			color: black;
 		}
 		.menu_user_logeado>h4>a:hover{
-			background-color: white;
+			background-color: black;
+			color: yellow;
 		}
 	.menu_user_logeado>p{
 		padding-top: .5em;
