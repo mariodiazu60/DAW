@@ -74,7 +74,7 @@
 				if(!mysqli_query($enlace, $sentencia4)) 
 						die("Error: no se pudo realizar el borrado");
 
-				echo "<h3>Te has dado de baja</h3>";
+				echo "<h3>Pulsa en Continuar para darte de baja</h3>";
 				echo "<br>";
 				echo "<h4><a href='control_salida.php'>Continuar</a></h4>";
 			} else {
