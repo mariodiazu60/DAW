@@ -5,6 +5,10 @@
 	$title = "Resultado solicitud álbum";
     require_once("../Plantilla/../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+    if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+        $_SESSION[ 'display_page1' ] = TRUE;
+        header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
+    }
 ?>
 		<nav>
 			<?php
@@ -16,10 +20,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="menu_user_logeado">

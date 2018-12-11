@@ -16,10 +16,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="menu_user_logeado">
@@ -34,14 +30,14 @@
 					$fnac = $_POST["fecha"];
 					$pais = $_POST["pais"];
 					$city = $_POST["ciud"];
-					$foto = $_POST["foto"];
+					$foto = $_FILES["foto"]["name"];
 					
 					echo "<ul>";
 
 					require_once("../Plantilla/regex.inc");
 
-					if ($contra==$contra1){
-						if (preg_match('/'.$regexpusu.'/', $usu)){
+					if ($contra==$contra1) {
+						if (preg_match('/'.$regexpusu.'/', $usu)) {
 							if (preg_match('/'.$regexcontra.'/', $contra)) {
 								if (preg_match('/'.$regexemail.'/', $correo)) {
 									if (preg_match('/'.$regexfecha.'/', $fnac)) {
@@ -54,7 +50,7 @@
 									    }
 
 				              			mysqli_set_charset($enlace, "utf8");
-				              			$sentencia = "INSERT INTO usuarios (IdUsuario, NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais) VALUES (null, '$usu', '$contra', '$correo', $sexo, '$fnac', '$city', $pais)";
+				              			$sentencia = "INSERT INTO usuarios (IdUsuario, NomUsuario, Clave, Email, Sexo, FNacimiento, Ciudad, Pais, Foto) VALUES (null, '$usu', '$contra', '$correo', $sexo, '$fnac', '$city', $pais, '$foto')";
 
 				              			if(!mysqli_query($enlace, $sentencia)) 
 				   							die("Error: no se pudo realizar la inserción");
@@ -68,6 +64,12 @@
 										}
 
 										$fila = mysqli_fetch_assoc($resultado);
+
+										if($_FILES["foto"]["error"] > 0) { 
+   											echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />"; 
+   										} else {
+   											if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "G:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$fila['IdUsuario'].$_FILES["foto"]["name"])){}
+   										}
 
 										echo "<li>Nombre de usuario: ".$usu."</li>";
 										echo "<li>Contraseña: ".$contra."</li>";
@@ -86,6 +88,12 @@
 										if (!empty($fila['Ciudad'])) {
 											echo "<li>Ciudad: ".$fila['Ciudad']."</li>";
 										}
+
+										echo "<li>Foto de perfil:</li>";
+										echo "<br>";
+										echo "<figure>";
+		        						echo "<img src='../Imagenes/Perfil/".$fila['IdUsuario'].$fila['Foto']."' width=50% height=50%>";
+		        						echo "</figure>";
 
 										mysqli_free_result($resultado);
 						            	mysqli_close($enlace);

@@ -16,15 +16,11 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="formularios">
 			<h2>Registro</h2>
-			<form name="registro" action="res_registro.php" id="form" method="post">
+			<form name="registro" action="res_registro.php" id="form" method="post" enctype="multipart/form-data">
 
 				<label for="usu"> Nombre de usuario:</label>
 				<input type="text" id="usu" name="usu" required>

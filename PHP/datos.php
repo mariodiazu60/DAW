@@ -5,6 +5,10 @@
 	$title = "Registro";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+    if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+        $_SESSION[ 'display_page1' ] = TRUE;
+        header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
+    }
 ?>
 		<nav>
 			<?php
@@ -16,10 +20,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 		<?php
 			if(isset($_COOKIE['usuario_recordado'])){
@@ -49,7 +49,7 @@
 
 			echo "<section class='formularios'>";
 			echo "<h2>Modifica tus datos:</h2>";
-			echo "<form name='registro' action='res_datos.php' id='form' method='post'>";
+			echo "<form name='registro' action='res_datos.php' id='form' method='post' enctype='multipart/form-data'>";
 
 				echo "<label for='usu'> Nombre de usuario: ".$fila['NomUsuario']."</label>";
 				echo "<input type='text' id='usu' name='usu'>";
@@ -114,7 +114,7 @@
 				echo "<br>";
 				echo "<br>";
 				echo "<figure>";
-		        echo "<img src='../Imagenes/".$fila['Foto']."' width=50% height=50%>";
+		        echo "<img src='../Imagenes/Perfil/".$valores[5].$fila['Foto']."' width=50% height=50%>";
 		        echo "</figure>";
 		        echo "<br>";
 				echo "<input id='foto' class='puntero_mano' name='foto' type='file'>";

@@ -14,10 +14,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="formularios">

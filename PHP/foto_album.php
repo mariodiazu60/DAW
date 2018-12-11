@@ -20,15 +20,11 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="formularios">
-			<h2>Añade una foto a tu álbum:</h2>
-            <form name='registro' action='res_foto_album.php' id='form' method='post'>
+			<h2>Añade una foto a un álbum:</h2>
+            <form name='registro' action='res_foto_album.php' id='form' method='post' enctype='multipart/form-data'>
                 <label for="nomb"> Título:</label>
                 <input type="text" name="tit" id="nomb" title="M&aacute;ximo 200 caracteres." maxlength="200" required>
 
@@ -74,6 +70,7 @@
 
                 <label for="album"> Álbum:</label>
                 <select name="album" id="album">
+                <option value="0">-Elegir-</option>
                 <?php
                     if(isset($_COOKIE['usuario_recordado'])){
                         $valores = explode(" ", $_COOKIE['usuario_recordado']);

@@ -20,10 +20,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="detalle">
@@ -42,7 +38,7 @@
 					    }
 
               			mysqli_set_charset($enlace, "utf8");
-              			$sentencia = "SELECT * from fotos";
+              			$sentencia = "SELECT * from fotos WHERE $id=IdFoto";
 
 					    if(!($resultado = @mysqli_query($enlace, $sentencia))) {
 						   echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
@@ -50,7 +46,7 @@
 						   exit;
 						}
 
-						if (mysqli_num_rows($resultado)<$id) {
+						if (mysqli_num_rows($resultado)!=1) {
 							echo "<h3>Esta foto no existe</h3>";
 							echo "<br>";
 

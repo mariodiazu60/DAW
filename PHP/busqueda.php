@@ -16,10 +16,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<h2 class="titulo_formulario_buscar">B&uacute;squeda por filtros:</h2>
@@ -36,7 +32,7 @@
 
 				<label for="pais"> Pa&iacute;s:</label>
                 <select name="pais" id="pais">
-                	<option value="0">Elegir</option>
+                	<option value="0">-Elegir-</option>
                 	<?php
 						require_once("../Plantilla/bbdd.inc");
 

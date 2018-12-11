@@ -16,24 +16,16 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<h2 class="titulo_filtros_busq">Resultado de la b&uacute;squeda:</h2>
 		<section class="filtros_busq">
             <?php
-                if (isset($_POST["buscar"])) { $busc = $_POST["buscar"]; }
                 if (isset($_POST["tit"])) { $tit = $_POST["tit"]; }
                 if (isset($_POST["date1"])) { $fecha1 = $_POST["date1"]; }
                 if (isset($_POST["date2"])) { $fecha2 = $_POST["date2"]; }
                 if (isset($_POST["pais"])) { $pais = $_POST["pais"]; }
 
-                if (!empty($busc)) {
-                    echo "<p><b>Buscado: ".$busc."</b></p>";
-                }
                 if (!empty($tit)) {
                     echo "<p><b>Título: ".$tit."</b></p>";
                 }
@@ -66,8 +58,6 @@
                     echo "<p><b>País: ".$fila['NomPais']."</b></p>";
                     mysqli_free_result($resultado);
                 }
-
-                mysqli_close($enlace);
             ?>
             <div>
                 <?php

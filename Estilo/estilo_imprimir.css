@@ -71,7 +71,12 @@ body>nav>ul{
 .puntero_mano{
 	cursor: pointer;
 }
-
+body>hr{
+	margin-top: 1em;
+	margin-left: .5em;
+	margin-right: .5em;
+	border: .2em solid black;
+}
 /*MOSTRAR FOTOS*/
 body>section{
 	width: 100%;

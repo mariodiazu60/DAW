@@ -5,6 +5,10 @@
 	$title = "Foto añadida";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
+    if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
+        $_SESSION[ 'display_page1' ] = TRUE;
+        header("Location: http://localhost/DAW/PHP/inicio_sesion.php");
+    }
 ?>
 		<nav>
 			<?php
@@ -16,10 +20,6 @@
                     require_once("../Plantilla/nav_no.inc");
                 }
             ?>
-			<form name="busqueda" class="buscador" action="res_busqueda.php" method="post">
-				<input type="search" name="buscar" placeholder="Buscar">
-                <input class="puntero_mano" type="submit" name="Enviar">
-			</form>
 		</nav>
 
 		<section class="menu_user_logeado">
@@ -35,7 +35,7 @@
 					$desc = $_POST["desc"];
 					$fecha = $_POST["date"];
 					$pais = $_POST["pais"];
-					$foto = $_POST["foto"];
+					$foto = $valores[5].$_FILES["foto"]["size"].$_FILES["foto"]["name"];
 					$alter = $_POST["alter"];
 					$album = $_POST["album"];
 					
@@ -50,12 +50,7 @@
 					}
 
 					mysqli_set_charset($enlace, "utf8");
-					$sentencia = "INSERT INTO fotos (IdFoto, Titulo, Descripcion, Fecha, Pais, Album, Fichero, Alternativo) VALUES (null, '$tit', '$desc', '$fecha', $pais, $album, '$foto', '$alter')";
-
-				    if(!mysqli_query($enlace, $sentencia)) 
-				   		die("Error: no se pudo realizar la inserción");
-
-				   	$sentencia = "SELECT NomPais, Titulo FROM paises, albumes WHERE IdAlbum=$album AND IdPAis=$pais";
+					$sentencia = "SELECT * FROM albumes, usuarios WHERE NomUsuario='$valores[0]' AND Usuario=IdUsuario";
 
 					if(!($resultado = @mysqli_query($enlace, $sentencia))) {
 					    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
@@ -63,15 +58,42 @@
 					    exit;
 					}
 
-					$fila = mysqli_fetch_assoc($resultado);
+					if (mysqli_num_rows($resultado)>0) {
+						$sentencia = "INSERT INTO fotos (IdFoto, Titulo, Descripcion, Fecha, Pais, Album, Fichero, Alternativo) VALUES (null, '$tit', '$desc', '$fecha', $pais, $album, '$foto', '$alter')";
 
-					echo "<li>Título de la foto: ".$tit."</li>";
-					echo "<li>Descripción: ".$desc."</li>";
-					echo "<li>Fecha de la foto: ".$fecha."</li>";
-					echo "<li>País donde fue tomada la foto: ".$fila['NomPais']."</li>";
-					echo "<li>Fichero: ".$foto."</li>";
-					echo "<li>Album: ".$fila['Titulo']."</li>";
-					echo "<li>Texto alternativo: ".$alter."</li>";
+					    if(!mysqli_query($enlace, $sentencia)) 
+					   		die("Error: no se pudo realizar la inserción");
+
+					   	if($_FILES["foto"]["error"] > 0) { 
+   							echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />"; 
+   						} else {
+   							if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "G:\\xampp\\htdocs\\DAW\\Imagenes\\".$valores[5].$_FILES["foto"]["size"].$_FILES["foto"]["name"])){}
+   						}
+
+					   	$sentencia = "SELECT NomPais, al.Titulo as ATitulo, Fichero FROM paises as pa, albumes as al, fotos as fo WHERE Fichero='$foto' AND IdAlbum=$album AND IdPAis=$pais";
+
+						if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+						    echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+						    echo '</p>';
+						    exit;
+						}
+
+						$fila = mysqli_fetch_assoc($resultado);
+
+						echo "<li>Título de la foto: ".$tit."</li>";
+						echo "<li>Descripción: ".$desc."</li>";
+						echo "<li>Fecha de la foto: ".$fecha."</li>";
+						echo "<li>País donde fue tomada la foto: ".$fila['NomPais']."</li>";
+						echo "<li>Foto:</li>";
+						echo "<br>";
+						echo "<figure>";
+		        		echo "<img src='../Imagenes/".$fila['Fichero']."' width=50% height=50%>";
+		        		echo "</figure>";
+						echo "<li>Album: ".$fila['ATitulo']."</li>";
+						echo "<li>Texto alternativo: ".$alter."</li>";
+					} else {
+						echo "<h3>Selecciona álbum al cual añadir la foto, si no tienes ninguno, créalo.</h3>";
+					}
 
 					mysqli_free_result($resultado);
 					mysqli_close($enlace);
