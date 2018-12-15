@@ -1,1 +1,4 @@
-Juan/Me gusta papa/3
+Juan/Me gusta/3
+Marta/No gusta/1
+Mario/La mejor foto del mundo/2
+Antonio/La peor foto del mundo/4

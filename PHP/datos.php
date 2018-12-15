@@ -2,7 +2,7 @@
     include 'pre_cabecera.php';
     $_SESSION[ 'display_page2' ] = FALSE;
 	$_SESSION[ 'display_page1' ] = FALSE;
-	$title = "Registro";
+	$title = "Modifica tus datos";
     require_once("../Plantilla/cabecera.inc");
     require_once("../Plantilla/inicio.inc");
     if(isset($_COOKIE['usuario_recordado'])==false && isset($_SESSION['usuario_sesion'])==false){
@@ -111,13 +111,22 @@
 				echo "<input type='text' name='ciud' id='ciud'>";
 
 				echo "<label for='foto'> Foto de perfil: </label>";
-				echo "<br>";
-				echo "<br>";
-				echo "<figure>";
-		        echo "<img src='../Imagenes/Perfil/".$valores[5].$fila['Foto']."' width=50% height=50%>";
-		        echo "</figure>";
-		        echo "<br>";
+				if ($fila['Foto']!="") {
+					echo "<br>";
+					echo "<br>";
+					echo "<figure>";
+			        echo "<img src='../Imagenes/Perfil/".$valores[5].$fila['Foto']."' width=50% height=50%>";
+			        echo "</figure>";
+			        echo "<br>";
+			    } else {
+			    	echo "<br>";
+					echo "<br>";
+			    	echo "<p>No tienes definida ninguna foto de perfil</p>";
+			    	echo "<br>";
+			    }
 				echo "<input id='foto' class='puntero_mano' name='foto' type='file'>";
+				echo "<label for='eliminar'> Eliminar imagen de perfil: </label>";
+			    echo "<input type='checkbox' id='eliminar' name='eliminar'>";
 
 				echo "<label for='contra2'> Introduce tu contraseña actual para confirmar los cambios: </label>";
 				echo "<input type='password' id='contra2' name='contra2' required>";

@@ -68,7 +68,7 @@
 										if($_FILES["foto"]["error"] > 0) { 
    											echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />"; 
    										} else {
-   											if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "G:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$fila['IdUsuario'].$_FILES["foto"]["name"])){}
+   											if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "C:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$fila['IdUsuario'].$_FILES["foto"]["name"])){}
    										}
 
 										echo "<li>Nombre de usuario: ".$usu."</li>";

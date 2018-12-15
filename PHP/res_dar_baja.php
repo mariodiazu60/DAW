@@ -53,6 +53,19 @@
 			if ($contra==$valores[1] && preg_match('/'.$regexcontra.'/', $contra)) {
 				while ($fila = mysqli_fetch_assoc($resultado)) {
 					$id = $fila['IdAlbum'];
+					$sentencia5 = "SELECT Fichero FROM fotos WHERE Album='$id'";
+
+					if(!($resultado1 = @mysqli_query($enlace, $sentencia5))) {
+			    		echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+			    		echo '</p>';
+			    		exit;
+					}
+
+					while ($fila1 = mysqli_fetch_assoc($resultado1)) {
+						unlink("C:\\xampp\\htdocs\\DAW\\Imagenes\\".$fila1['Fichero']);
+					}
+					mysqli_free_result($resultado1);
+
 					$sentencia1 = "DELETE FROM fotos WHERE Album='$id'";
 
 					if(!mysqli_query($enlace, $sentencia1)) 

@@ -35,7 +35,8 @@
 					$desc = $_POST["desc"];
 					$fecha = $_POST["date"];
 					$pais = $_POST["pais"];
-					$foto = $valores[5].$_FILES["foto"]["size"].$_FILES["foto"]["name"];
+					$nRand = mt_rand();
+					$foto = $valores[5].$nRand.$_FILES["foto"]["name"];
 					$alter = $_POST["alter"];
 					$album = $_POST["album"];
 					
@@ -67,7 +68,7 @@
 					   	if($_FILES["foto"]["error"] > 0) { 
    							echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />"; 
    						} else {
-   							if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "G:\\xampp\\htdocs\\DAW\\Imagenes\\".$valores[5].$_FILES["foto"]["size"].$_FILES["foto"]["name"])){}
+   							if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "C:\\xampp\\htdocs\\DAW\\Imagenes\\".$foto)){}
    						}
 
 					   	$sentencia = "SELECT NomPais, al.Titulo as ATitulo, Fichero FROM paises as pa, albumes as al, fotos as fo WHERE Fichero='$foto' AND IdAlbum=$album AND IdPAis=$pais";

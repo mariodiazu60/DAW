@@ -42,6 +42,8 @@
 					$pais = $_POST["pais"];
 					$city = $_POST["ciud"];
 					$foto = $_FILES["foto"]["name"];
+					if (isset($_POST['eliminar']))
+						$eliminar = $_POST['eliminar'];
 					
 					echo "<ul>";
 
@@ -194,10 +196,34 @@
 						    if($_FILES["foto"]["error"] > 0) { 
    								echo "Error: " . $msgError[$_FILES["foto"]["error"]] . "<br />"; 
    							} else {
-   								if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "G:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$valores[5].$_FILES["foto"]["name"])){}
+   								if (@move_uploaded_file($_FILES["foto"]["tmp_name"], "C:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$valores[5].$_FILES["foto"]["name"])){}
    							}
 						} else {
 							echo "<h3>La contraseña introducida no es válida</h3>";
+						}
+					}
+
+					if (isset($_POST['eliminar'])) {
+						if ($eliminar == "on") {
+							if ($contra2==$valores[1] && preg_match('/'.$regexcontra.'/', $contra2)) {
+								$sentencia = "SELECT Foto FROM usuarios WHERE NomUsuario='$valores[0]'";
+
+								if(!($resultado = @mysqli_query($enlace, $sentencia))) {
+						    		echo "<p>Error al ejecutar la sentencia <b>$sentencia</b>: " . mysqli_error($enlace);
+						    		echo '</p>';
+						    		exit;
+								}
+
+								$fila = mysqli_fetch_assoc($resultado);
+								unlink("C:\\xampp\\htdocs\\DAW\\Imagenes\\Perfil\\".$valores[5].$fila['Foto']);
+
+								$sentencia = "UPDATE usuarios SET Foto='' WHERE NomUsuario='$valores[0]'";
+
+							    if(!mysqli_query($enlace, $sentencia)) 
+							        die("Error: no se pudo realizar la actualización");
+							} else {
+								echo "<h3>La contraseña introducida no es válida</h3>";
+							}
 						}
 					}
 
@@ -224,10 +250,14 @@
 						echo "<li>Pais de residencia: ".$fila['NomPais']."</li>";
 						echo "<li>Ciudad: ".$fila['Ciudad']."</li>";
 						echo "<li>Foto de perfil: </li>";
-						echo "<br>";
-						echo "<figure>";
-		        		echo "<img src='../Imagenes/Perfil/".$valores[5].$fila['Foto']."' width=50% height=50%>";
-		        		echo "</figure>";
+						if ($fila['Foto']!="") {
+							echo "<br>";
+							echo "<figure>";
+			        		echo "<img src='../Imagenes/Perfil/".$valores[5].$fila['Foto']."' width=50% height=50%>";
+			        		echo "</figure>";
+		        		} else {
+		        			echo "<p>No tienes definida ninguna foto de perfil</p>";
+		        		}
 					} else {
 						echo "<h4>No existe este usuario".$id."</h4>";
 					}

@@ -22,7 +22,7 @@
 		<h2 class="titulo_filtros_busq">Foto recomendada:</h2>
 		<section class="filtros_busq">
 				<?php
-					if(($fichero = @file("G:\\xampp\\htdocs\\DAW\\Imagenes\\seleccion.txt")) == false) { 
+					if(($fichero = @file("C:\\xampp\\htdocs\\DAW\\Imagenes\\seleccion.txt")) == false) { 
 	   					echo "No se ha podido abrir el fichero";
 	 				} else {
 	 					$nRand = mt_rand(0, count($fichero)-1);
